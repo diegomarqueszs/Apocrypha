@@ -1,11 +1,11 @@
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/90580148/215501721-5e10305b-3d98-4ca0-b15d-a4350c0bcf24.jpeg" alt="logo" width="300" height="300">
+    <img src="https://user-images.githubusercontent.com/90580148/215624958-ca5b593c-6172-4201-a583-77ba2aab5295.png" alt="logo" width="300" height="300">
 </p>
 
 <h3 align="center">Apocrypha - Gerenciamento de Bibliotecas </h3>
 
 <p align="center">
-    Trabalho de Engenharia de Software - Antonio Maria
+  GCC188 - Engenharia de Software 
 </p>
     
 ## Membros do grupo:
