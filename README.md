@@ -14,7 +14,7 @@
 - THIAGO HENRIQUE DOS REIS MAGALHÃES **202110174** *(thiago.magalhaes3@estudante.ufla.br)*
 
 ## Visão geral do sistema:
-A cidade `Brasiléia, Acre`, recebeu apoio para construir uma nova biblioteca na cidade. No entanto, todo o gerenciamento de livros, empréstimos, clientes e funcionários, `ainda são feitos com papel e caneta` nas outras bibliotecas da cidade. Nessa biblioteca a cidade gostaria de fazer diferente, pois há uma enorme dificuldade de "navegar" entre os arquivos físicos das bibliotecas, além do desperdício de papel e espaço. Diante disso, a empresa `Data Science` Eyes foi contratada para desenvolver um software que auxilie no gerenciamento da biblioteca. 
+A cidade `Brasiléia, Acre`, recebeu apoio para construir uma nova biblioteca na cidade. No entanto, todo o gerenciamento de livros, empréstimos, clientes e funcionários, `ainda são feitos com papel e caneta` nas outras bibliotecas da cidade. Nessa biblioteca a cidade gostaria de fazer diferente, pois há uma enorme dificuldade de "navegar" entre os arquivos físicos das bibliotecas, além do desperdício de papel e espaço. Diante disso, a empresa `Data Science Eyes` foi contratada para desenvolver um software que auxilie no gerenciamento da biblioteca. 
 O sistema fará o controle de todos os clientes, funcionários, livros e empréstimos.
 
 ### Principais funcionalidades:
