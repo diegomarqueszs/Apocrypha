@@ -22,3 +22,30 @@ O sistema fará o controle de todos os clientes, funcionários, livros e emprés
     - O sistema deve ser capaz de cadastrar, consultar, atualizar, remover clientes
     - O sistema deve ser capaz de cadastrar, consultar, atualizar, remover funcionários
     - O sistema deve ser capaz de realizar, buscar, atualizar, remover empréstimos
+    
+### Usuários:
+    - Funcionários 
+    - Admnistrador
+## Estrutura de diretório
+    - Apocrypha
+        - View
+            - Login
+            - Funcionário
+            - Empréstimo
+            - Cliente
+        - Model
+        - Controler
+            - CRUD Aluno
+            - CRUD Livro
+            - CRUD Empréstimo
+            
+        - Persistence
+            -
+        
+## Tecnologias Utilizadas:
+- HTML 5 
+- CSS 3 
+- NodeJS
+- MySQL 8.0
+- Apache 2.4.52
+
