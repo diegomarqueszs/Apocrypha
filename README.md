@@ -25,7 +25,7 @@ O sistema fará o controle de todos os clientes, funcionários, livros e emprés
     
 ### Usuários:
     - Funcionários 
-    - Admnistrador
+    - Administrador
 ## Estrutura de diretório
     - Apocrypha
         - View
