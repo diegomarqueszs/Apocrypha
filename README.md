@@ -34,14 +34,12 @@ O sistema fará o controle de todos os clientes, funcionários, livros e emprés
             - Funcionário
             - Empréstimo
             - Cliente
-        - Model
+            - Livro
+        - Routes
+        - Services
         - Controler
-            - CRUD Aluno
-            - CRUD Livro
-            - CRUD Empréstimo
-            
         - Persistence
-            -
+        - Model
         
 ## Tecnologias Utilizadas:
 - HTML 5 
