@@ -18,6 +18,7 @@ A cidade `Brasiléia, Acre`, recebeu apoio para construir uma nova biblioteca na
 O sistema fará o controle de todos os clientes, funcionários, livros e empréstimos.
 
 ### Principais funcionalidades:
+    - Os funcionários devem ser capazes de realizar login no sistema.
     - O sistema deve ser capaz de cadastrar, consultar, atualizar, remover livros
     - O sistema deve ser capaz de cadastrar, consultar, atualizar, remover clientes
     - O sistema deve ser capaz de cadastrar, consultar, atualizar, remover funcionários
