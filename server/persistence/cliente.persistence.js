@@ -1,5 +1,4 @@
-import pg from "pg"
-
+import {conectar} from "./bancoDeDados.js";
 
 async function getAllClients(){
 
@@ -33,12 +32,16 @@ async function getClient(cpf){
     }
 }
 
-async function createClient(cpf, nome, salario){
+async function createClient(cpf, nome, dataNascimento, telefone, endereco){
 
     const conn = await conectar();
 
     try{
-        const consulta = await conn.query("insert into cliente values($1,$2,$3) returning *", [cpf, nome, salario])
+        const consulta = await conn.query(
+            "INSERT INTO cliente (cpf,nome,nascimento,telefone,endereco)\
+             VALUES ($1,$2,$3,$4,$5) returning *",
+            [cpf, nome, dataNascimento, telefone, endereco])
+
         console.log("Inserindo...... \n" + consulta.rows)
         return consulta.rows
     }
@@ -48,10 +51,6 @@ async function createClient(cpf, nome, salario){
     finally{
         conn.release();
     }
-
-
-    // console.log("createClient !!!")
-    // res.send("createClient !!!  " + cod + " " + nome + " " + salario)
 }
 
 async function deleteClient(cpf){
@@ -70,14 +69,16 @@ async function deleteClient(cpf){
     }
 }
 
-async function updateClient(cpfAtual, cpf, nome, salario){
+async function updateClient(cpfAtual, cpf, nome, dataNascimento, telefone, endereco){
 
     const conn = await conectar();
 
     try{
-        const consulta = await conn.query("update cliente set cpf=$1, nome=$2, salario=$3 where cpf=$4 returning *", 
-        [cpf, nome, salario, cpfAtual])
-        res.send("cliente alterado" + consulta.rows)
+        const consulta = await conn.query(
+            "update cliente set cpf=$1, nome=$2, nascimento=$3, telefone=$4, endereco=$5\
+             where cpf=$6 returning *", 
+            [cpf, nome, dataNascimento, telefone, endereco, cpfAtual])
+        return consulta.rows
     }
     catch(err){
         console.log(err);
@@ -85,17 +86,6 @@ async function updateClient(cpfAtual, cpf, nome, salario){
     finally{
         conn.release();
     }
-}
-
-function conectar(){
-    if (global.connection){
-        return global.connection.connect();
-    }
-    const pool = new pg.Pool({
-        connectionString:"postgres://postgres:123@localhost:5432/teste"
-    })
-    global.connection = pool;
-    return pool.connect();
 }
 
 export default {getAllClients, getClient, createClient, deleteClient, updateClient}
