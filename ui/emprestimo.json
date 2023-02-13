@@ -1,0 +1,49 @@
+{
+    "emprestimos": [
+        {
+            "id_usuario": 1,
+            "id_livro": 1001,
+            "id_funcionario": 101,
+            "data_emprestimo": "2022-12-01",
+            "data_devolucao": "2022-12-15",
+            "situacao": "Emprestado",
+            "pendencia": "nao"
+        },
+        {
+            "id_usuario": 2,
+            "id_livro": 1002,
+            "id_funcionario": 102,
+            "data_emprestimo": "2022-11-22",
+            "data_devolucao": "2022-12-05",
+            "situacao": "Emprestado",
+            "pendencia": "nao"
+        },
+        {
+            "id_usuario": 3,
+            "id_livro": 1003,
+            "id_funcionario": 103,
+            "data_emprestimo": "2022-10-10",
+            "data_devolucao": "2022-10-20",
+            "situacao": "Emprestado",
+            "pendencia": "nao"
+        },
+        {
+            "id_usuario": 4,
+            "id_livro": 1004,
+            "id_funcionario": 104,
+            "data_emprestimo": "2022-09-01",
+            "data_devolucao": "2022-09-15",
+            "situacao": "Emprestado",
+            "pendencia": "nao"
+        },
+        {
+            "id_usuario": 5,
+            "id_livro": 1005,
+            "id_funcionario": 105,
+            "data_emprestimo": "2022-08-22",
+            "data_devolucao": "2022-08-30",
+            "situacao": "Emprestado",
+            "pendencia": "nao"
+        }
+    ]
+}
