@@ -1,3 +1,4 @@
+
 //Ler o arquivo JSON
 var emprestimo = JSON.parse(emprestimo);
 
@@ -23,3 +24,4 @@ emprestimo.forEach(function(emprestimo){
   situacao.innerHTML = emprestimo.situacao;
   pendencia.innerHTML = emprestimo.pendencia;
 });
+
