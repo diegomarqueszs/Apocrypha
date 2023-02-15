@@ -7,6 +7,7 @@ const servidor = express()
 
 servidor.use(express.json())
 servidor.use(express.urlencoded({extended: true}))
+servidor.use(express.static('./view/style.css'));
 
 servidor.get("/login", telaInicial)
 
@@ -20,5 +21,5 @@ function servico(){
 }
 
 function telaInicial(req, res){
-    res.sendFile("./view/emprestimo.html", { root: '.' })
+    res.sendFile("index.html", { root: '.' })
 }
