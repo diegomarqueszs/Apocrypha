@@ -11,9 +11,11 @@ async function getClient(req, res){
         res.send("CPF Inválido.")
     }
     else{
-        res.send(await clienteService.getClient(cpf));
+        const rows = await clienteService.getClient(cpf)
+        res.send(rows);
     }
 }
+
 
 async function createClient(req, res){
     const cpf = req.body.cpf
@@ -30,7 +32,13 @@ async function createClient(req, res){
         res.send("CPF inválido")
     }
     else{
-        res.send(await clienteService.createClient(cpf, nome, dataNascimento, telefone, endereco));
+        const rows = await clienteService.createClient(cpf, nome, dataNascimento, telefone, endereco);
+        if (rows[0]){
+            res.redirect('/client/')
+        }
+        else{
+            res.send(rows);
+        }
     }
 }
 
