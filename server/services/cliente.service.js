@@ -21,24 +21,6 @@ async function createClient(cpf, nome, dataNascimento, telefone, endereco){
         console.log("CPF já cadastrado")
         return ("CPF já cadastrado")
     }else{
-
-        const list = document.querySelector("#funcionario-list");
-        const row = document.createComment("tr");
-
-        row.innerHTML = `
-            <td>${cpf}</td>
-            <td>${nome}</td>
-            <td>${dataNascimento}</td>
-            <td>${telefone}</td>
-            <td>${endereco}</td>
-            <td>
-                <a href="#" class="btn btn-warning btn-sm edit">Editar</a>
-                <a href="#" class="btn btn-danger btn-sm delete">Deletar</a>
-            </td>
-        `;
-        list.appendChild(row);
-
-
         return await clientePersistence.createClient(cpf, nome, dataNascimento, telefone, endereco)
     }
 }
