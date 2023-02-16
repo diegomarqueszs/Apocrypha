@@ -53,19 +53,21 @@
             <th>Qnt. Livros Emprestados</th>
             <th>Ações</th>
           </thead>
-          <tbody class="funcionario-list">
-            <tr>
-              <td>000000000</td>
-              <td>DIEGO</td>
-              <td>20/12/2012</td>
-              <td>35 9 8888-8888</td>
-              <td>UNIVERSIDADE FEDERAL DE LAVRAS</td>
-              <td>2</td>
-              <td>
-                <a href="#" class="btn btn-warning btn-sm edit">Editar</a>
-                <a href="#" class="btn btn-danger btn-sm delete">Deletar</a>
-              </td>
-            </tr>
+          <tbody>
+            <% rows.forEach((row) => { %>
+              <tr>
+                <td><%= row.id %></td>
+                <td><%= row.nome %></td>
+                <td><%= row.cpf %></td>
+                <td><%= row.telefone %></td>
+                <td><%= row.endereco %></td>
+                <td><%= row.qntLivrosEmprestados %></td>
+                <td>
+                  <a href="#" class="btn btn-warning btn-sm edit">Editar</a>
+                  <a href="#" class="btn btn-danger btn-sm delete">Deletar</a>
+                </td>
+              </tr>
+            <% }); %>
           </tbody>
         </table>
       </div>

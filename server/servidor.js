@@ -7,7 +7,9 @@ const servidor = express()
 
 servidor.use(express.json())
 servidor.use(express.urlencoded({extended: true}))
-servidor.use(express.static('./view/style.css'));
+
+
+servidor.set('view engine', 'ejs')
 
 servidor.get("/login", telaInicial)
 
@@ -21,5 +23,5 @@ function servico(){
 }
 
 function telaInicial(req, res){
-    res.sendFile("index.html", { root: '.' })
+    res.sendFile("index", { root: '.' })
 }

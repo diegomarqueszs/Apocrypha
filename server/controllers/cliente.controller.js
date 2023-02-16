@@ -1,7 +1,8 @@
 import clienteService from "../services/cliente.service.js"
 
 async function getAllClients(req, res){
-    res.send(await clienteService.getAllClients());
+    const rows = await clienteService.getAllClients();
+    res.render('teste', {rows: rows});
 }
 
 async function getClient(req, res){
