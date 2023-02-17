@@ -29,6 +29,7 @@ O sistema fará o controle de todos os clientes, funcionários, livros e emprés
     - Administrador
 ## Estrutura de diretório
     - Apocrypha
+        - Model
         - Padrões Adotados
         - Requisitos
         - Server
@@ -48,6 +49,8 @@ O sistema fará o controle de todos os clientes, funcionários, livros e emprés
 - HTML 5 
 - CSS 3 
 - NodeJS
-- MySQL 8.0
+- PostgreSQL 15.0
 - Apache 2.4.52
+- Insomnia 2022.7.5
+- Embedded JavaScript
 
