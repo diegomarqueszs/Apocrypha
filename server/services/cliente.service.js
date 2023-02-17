@@ -35,9 +35,12 @@ async function deleteClient(cpf){
     }
 }
 
-async function updateClient(cpfAtual, cpf, nome, dataNascimento, telefone, endereco){
+async function updateClient(cpfAtual, cpf, nome, telefone, endereco){
+    //console.log("passou1")
     const cliente = await clientePersistence.getClient(cpfAtual);
+    //console.log("passou2")
     const cliente2 = await clientePersistence.getClient(cpf);
+    //console.log("passou3")
 
     if (!cliente[0]){
         console.log("CPF não cadastrado")
@@ -48,7 +51,7 @@ async function updateClient(cpfAtual, cpf, nome, dataNascimento, telefone, ender
             console.log("O novo CPF já está cadastrado")
             return "O novo CPF já está cadastrado"
         }
-        return await clientePersistence.updateClient(cpfAtual, cpf, nome, dataNascimento, telefone, endereco) 
+        return await clientePersistence.updateClient(cpfAtual, cpf, nome, telefone, endereco) 
     }
 }
 

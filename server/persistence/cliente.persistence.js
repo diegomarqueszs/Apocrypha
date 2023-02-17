@@ -69,15 +69,15 @@ async function deleteClient(cpf){
     }
 }
 
-async function updateClient(cpfAtual, cpf, nome, dataNascimento, telefone, endereco){
+async function updateClient(cpfAtual, cpf, nome, telefone, endereco){
 
     const conn = await conectar();
 
     try{
         const consulta = await conn.query(
-            "update cliente set cpf=$1, nome=$2, nascimento=$3, telefone=$4, endereco=$5\
-             where cpf=$6 returning *", 
-            [cpf, nome, dataNascimento, telefone, endereco, cpfAtual])
+            "update cliente set cpf=$1, nome=$2, telefone=$3, endereco=$4\
+             where cpf=$5 returning *", 
+            [cpf, nome, telefone, endereco, cpfAtual])
         return consulta.rows
     }
     catch(err){
