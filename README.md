@@ -29,17 +29,20 @@ O sistema fará o controle de todos os clientes, funcionários, livros e emprés
     - Administrador
 ## Estrutura de diretório
     - Apocrypha
-        - View
-            - Login
-            - Funcionário
-            - Empréstimo
-            - Cliente
-            - Livro
-        - Routes
-        - Services
-        - Controler
-        - Persistence
-        - Model
+        - Padrões Adotados
+        - Requisitos
+        - Server
+            - View
+                -Imagens
+            - Routes
+            - Services
+            - Controllers
+            - Persistence
+            - Model
+                - Diagramas
+                    - Diagramas de Sequencia
+                    - Implementação do Sistema
+            - Node_modules
         
 ## Tecnologias Utilizadas:
 - HTML 5 
