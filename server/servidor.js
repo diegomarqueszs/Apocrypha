@@ -1,6 +1,7 @@
 import express from "express"
 
 import clienteRouter from "./routes/clientes.routes.js"
+import livroRouter from "./routes/livro.routes.js"
 
 
 const servidor = express()
@@ -15,6 +16,8 @@ servidor.get("/login", telaInicial)
 
 
 servidor.use("/client", clienteRouter)
+
+servidor.use("/livro",livroRouter)
 
 servidor.listen(3000, servico)
 
