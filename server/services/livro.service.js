@@ -25,4 +25,4 @@ async function createLivro(nome, autor, editora){
 }
 
 
-export default {getAllLivros, createLivro}
+export default {getAllLivros, createLivro, getLivro}
