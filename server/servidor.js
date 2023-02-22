@@ -2,6 +2,7 @@ import express from "express"
 
 import clienteRouter from "./routes/clientes.routes.js"
 import emprestimoRouter from "./routes/emprestimo.routes.js"
+import livroRouter from "./routes/livro.routes.js"
 
 
 const servidor = express()
@@ -16,6 +17,8 @@ servidor.set('view engine', 'ejs')
 
 servidor.use("/client", clienteRouter)
 servidor.use("/loan", emprestimoRouter)
+
+servidor.use("/livro",livroRouter)
 
 servidor.listen(3000, servico)
 
