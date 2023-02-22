@@ -32,6 +32,22 @@ async function getLivro(nome){
     }
 }
 
+async function getLivroID(id){
+    const conn = await conectar();
+
+    try{
+        const consulta = await conn.query("select * from livro where id=$1", [id])
+        console.log(consulta.rows)
+        return(consulta.rows)
+    }
+    catch(err){
+        console.log(err);
+    }
+    finally{
+        conn.release();
+    }
+}
+
 async function createLivro(nome, autor, editora){
 
     const conn = await conectar();
@@ -54,11 +70,11 @@ async function createLivro(nome, autor, editora){
 }
 
 
-async function deleteLivro(nome){
+async function deleteLivro(id){
 
     const conn = await conectar();
     try{
-        const consulta = await conn.query("delete from livro where nome=$1 returning *", [nome])
+        const consulta = await conn.query("delete from livro where id=$1 returning *", [id])
         console.log("Deletando...... \n" + consulta.rows)
         return consulta.rows
     }
@@ -70,4 +86,23 @@ async function deleteLivro(nome){
     }
 }
 
-export default {getAllLivros, createLivro, getLivro, deleteLivro}
+async function updateLivro(idAtual, id, nome, autor, editora, situacao){
+
+    const conn = await conectar();
+
+    try{
+        const consulta = await conn.query(
+            "update livro set id=$1, nome=$2, autor=$3, editora=$4, situacao=$5\
+             where id=$6 returning *", 
+            [id, nome, autor, editora, situacao,idAtual])
+        return consulta.rows
+    }
+    catch(err){
+        console.log(err);
+    }
+    finally{
+        conn.release();
+    }
+}
+
+export default {getAllLivros, createLivro, getLivro, deleteLivro, getLivroID, updateLivro}

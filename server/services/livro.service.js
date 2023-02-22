@@ -24,5 +24,35 @@ async function createLivro(nome, autor, editora){
     }
 }
 
+async function deleteLivro(id){
+    const livro = await livroPersistence.getLivroID(id);
+    if (!livro[0]){
+        console.log("Livro não cadastrado")
+        return ("Livro não cadastrado")
+    }else{
+        return await livroPersistence.deleteLivro(id) 
+    }
+}
 
-export default {getAllLivros, createLivro, getLivro}
+async function updateLivro(idAtual, id, nome, autor, editora,situacao){
+    //console.log("passou1")
+    const livro = await livroPersistence.getLivroID(idAtual);
+    //console.log("passou2")
+    const livro2 = await livroPersistence.getLivroID(id);
+    //console.log("passou3")
+
+    if (!livro[0]){
+        console.log("Livro não cadastrado")
+        return ("Livro não cadastrado")
+    }
+    else{
+        if (idAtual.localeCompare(id) != 0 && livro2[0]){
+            console.log("O novo id já está cadastrado")
+            return "O novo id já está cadastrado"
+        }
+        return await livroPersistence.updateLivro(idAtual, id, nome, autor, editora,situacao) 
+    }
+}
+
+
+export default {getAllLivros, createLivro, getLivro, deleteLivro, updateLivro}

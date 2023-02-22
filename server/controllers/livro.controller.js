@@ -28,6 +28,27 @@ async function getLivro(req, res){
     }
 }
 
+async function getLivroID(req, res){
+    const tipo = req.query.tipo;
+    const id = req.query.id;
+    if (!id){
+        res.send("ID Inválido.")
+    }
+    else{
+        const rows = await livroService.getLivroID(id)
+        if (tipo == 'filtro'){
+            res.render('viewLivro', {rows: rows});
+        }
+        else if (tipo == 'update'){
+            console.log(rows[0]);
+            res.render('viewUpdateLivro', {row: rows[0]});
+        }
+        else{
+            res.send(rows);
+        }
+    }
+}
+
 
 async function createLivro(req, res){
     const nome = req.body.nome
@@ -53,13 +74,20 @@ async function createLivro(req, res){
 
 async function deleteLivro(req, res){
     
-    const nome = decodeURIComponent(req.params.nome)
+    const id = parseInt(req.query.id);
+    const situacao = decodeURIComponent (req.params.situacao)
 
-    if (!nome){
-        res.send("Nome Inválido.")
+    if (!id || !Number(id)){
+        console.log("exibindo body");
+        console.log(req.query);
+        console.log(req.body);
+        res.send(`Id Inválido. ${id}`)
+    }
+    else if(!situacao){
+      res.send("Não é possível remover livros emprestados.")
     }
     else{
-        const rows = await livroPersistence.deleteLivro(nome)
+        const rows = await livroService.deleteLivro(id)
         if(rows[0]){
             res.redirect('/livro/')
         }
@@ -69,4 +97,36 @@ async function deleteLivro(req, res){
     }
 }
 
-export default {getAllLivros, createLivro, getLivro, deleteLivro}
+async function updateLivro(req, res){
+    
+    const idAtual = req.body.id
+    const id = req.body.id
+    const nome = req.body.nome
+    const autor = req.body.autor
+    const editora = req.body.editora
+    const situacao = req.body.situacao
+
+    console.log("qualquer coisa")
+    console.log(idAtual)
+
+    if (!id || !nome || !autor || !editora || !idAtual || !situacao){
+        res.send("ID, nome. editora, autor ou situcao inválidos")
+    }
+    else if(id<0){
+        res.send("ID deve ser posítivo")
+    }
+    else if(!Number(id) || !Number(idAtual)){
+        res.send("Id devem possuir somente numeros")
+    }
+    else if(id!=idAtual && situacao == true){
+        res.send("Não é possível alterar o id de livros que estão emprestados")
+    }
+    else{
+        const rows = await livroService.updateLivro(idAtual, id, nome, autor, editora,situacao);
+        console.log(rows);
+        res.redirect('/client/');
+    }
+}
+
+
+export default {getAllLivros, createLivro, getLivro, deleteLivro, updateLivro}
