@@ -1,6 +1,6 @@
 import emprestimoPersistence from "../persistence/emprestimo.persistence.js"
 import clientePersistence from "../persistence/cliente.persistence.js"
-//import livroPersistence from "../persistence/livro.persistence.js"
+import livroPersistence from "../persistence/livro.persistence.js"
 
 
 async function getAllLoans(){
@@ -19,7 +19,7 @@ async function getLoan(id){
 
 async function createLoan(cpfCliente, dataEmprestimo, dataDevolucao, cpfFuncionario, nomeLivro){
     const cliente = await clientePersistence.getClient(cpfCliente);
-    //const livro = await livroPersistence.getClient(nomeLivro);
+    const livro = await livroPersistence.getLivro(nomeLivro);
 
     if(!cliente[0]){
         console.log("Cliente não cadastrado")
@@ -29,8 +29,7 @@ async function createLoan(cpfCliente, dataEmprestimo, dataDevolucao, cpfFunciona
         return ("Livro não cadastrado")
     }
     else{
-        var livroObj = JSON.parse(livro[0])
-        if (livroObj.disponivel){
+        if (livro[0].disponivel){
             return await emprestimoPersistence.createLoan(cpfCliente, dataEmprestimo, dataDevolucao, cpfFuncionario, nomeLivro) 
         }
         else {
@@ -53,7 +52,7 @@ async function deleteLoan(id){
 async function updateLoan(tipo, id, dataEmprestimo, dataDevolucao, cpfCliente, cpfFuncionario, nomeLivro){
     const emprestimo = await emprestimoPersistence.getLoan(id);
     const cliente = await clientePersistence.getClient(cpfCliente);
-    //const livro = await livroPersistence.getClient(nomeLivro);
+    const livro = await livroPersistence.getLivro(nomeLivro);
 
     if (!emprestimo[0]){
         console.log("Empréstimo não cadastrado")

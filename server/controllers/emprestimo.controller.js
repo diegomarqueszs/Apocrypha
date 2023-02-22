@@ -43,9 +43,6 @@ async function createLoan(req, res){
     else if(cpfCliente.length != 11 || !Number(cpfCliente)){
         res.send("CPF do cliente inválido.")
     }
-    else if(cpfFuncionario.length != 11 || !Number(cpfFuncionario)){
-        res.send("CPF do funcionário inválido.")
-    }
     else{
         const rows = await emprestimoService.createLoan(cpfCliente, dataEmprestimo, dataDevolucao, cpfFuncionario, nomeLivro);
         if (rows[0]){
@@ -90,9 +87,6 @@ async function updateLoan(req, res){
     }
     else if(cpfCliente.length != 11 || !Number(cpfCliente)){
         res.send("CPF do cliente inválido.")
-    }
-    else if(cpfFuncionario.length != 11 || !Number(cpfFuncionario)){
-        res.send("CPF do funcionário inválido.")
     }
     else{
         //res.send(await emprestimoService.updateLoan(cpfAtual, cpf, nome, telefone, endereco));

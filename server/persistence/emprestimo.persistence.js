@@ -33,15 +33,15 @@ async function getLoan(id){
     }
 }
 
-async function createLoan(cpfLoane, dataEmprestimo, dataDevolucao, cpfFuncionario, nomeLivro){
+async function createLoan(cpfCliente, dataEmprestimo, dataDevolucao, cpfFuncionario, nomeLivro){
 
     const conn = await conectar();
 
     try{
         const consulta = await conn.query(
-            "INSERT INTO emprestimo (cpfLoane,nomelivro,cpffuncionario,dataemprestimo,datadevolucao) \
-            VALUES ('$1','$5','$4','$2','$3') returning *",
-            [cpfLoane, dataEmprestimo, dataDevolucao, cpfFuncionario, nomeLivro])
+            "INSERT INTO emprestimo (cpfcliente,nomelivro,cpffuncionario,dataemprestimo,datadevolucao) \
+            VALUES ($1,$5,$4,$2,$3) returning *",
+            [cpfCliente, dataEmprestimo, dataDevolucao, cpfFuncionario, nomeLivro])
 
         console.log("Inserindo...... \n" + consulta.rows)
         return consulta.rows
