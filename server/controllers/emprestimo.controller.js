@@ -76,23 +76,29 @@ async function updateLoan(req, res){
 
     const tipo = req.body.tipo
     const id = req.body.id
-    const dataEmprestimo = req.body.dataEmprestimo
-    const dataDevolucao = req.body.dataDevolucao
-    const cpfCliente = req.body.cpfCliente
-    const cpfFuncionario = req.body.cpfFuncionario
-    const nomeLivro = req.body.nomeLivro
-
-    if (!dataEmprestimo || !nomeLivro || !dataDevolucao || !cpfCliente || !cpfFuncionario){
-        res.send("Data de emprestimo/devolucao, nome do livro, CPF do cliente ou do funcionário inválidos")
-    }
-    else if(cpfCliente.length != 11 || !Number(cpfCliente)){
-        res.send("CPF do cliente inválido.")
-    }
-    else{
-        //res.send(await emprestimoService.updateLoan(cpfAtual, cpf, nome, telefone, endereco));
-        const rows = await emprestimoService.updateLoan(tipo, id, dataEmprestimo, dataDevolucao, cpfCliente, cpfFuncionario, nomeLivro);
+    if (tipo == "attDevolucao"){
+        const rows = await emprestimoService.updateLoanDevolucao(id);
         console.log(rows);
         res.redirect('/Loan/');
+    }
+    else{
+        const dataEmprestimo = req.body.dataEmprestimo
+        const dataDevolucao = req.body.dataDevolucao
+        const cpfCliente = req.body.cpfCliente
+        const cpfFuncionario = req.body.cpfFuncionario
+        const nomeLivro = req.body.nomeLivro
+
+        if (!dataEmprestimo || !nomeLivro || !dataDevolucao || !cpfCliente || !cpfFuncionario){
+            res.send("Data de emprestimo/devolucao, nome do livro, CPF do cliente ou do funcionário inválidos")
+        }
+        else if(cpfCliente.length != 11 || !Number(cpfCliente)){
+            res.send("CPF do cliente inválido.")
+        }
+        else{
+            const rows = await emprestimoService.updateLoan(tipo, id, dataEmprestimo, dataDevolucao, cpfCliente, cpfFuncionario, nomeLivro);
+            console.log(rows);
+            res.redirect('/Loan/');
+        }
     }
 }
 

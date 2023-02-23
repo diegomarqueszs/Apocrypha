@@ -70,22 +70,21 @@ async function deleteLoan(id){
     }
 }
 
-async function updateLoan(tipo, id, dataEmprestimo, dataDevolucao, cpfLoane, cpfFuncionario, nomeLivro){
+async function updateLoan(tipo, id, dataEmprestimo, dataDevolucao, cpfCliente, cpfFuncionario, nomeLivro){
 
     const conn = await conectar();
 
     try{
         var consulta;
-        if (tipo = 'update'){
+        if (tipo == 'update'){
             consulta = await conn.query(
-                "update emprestimo set dataemprestimo=$2, datadevolucao=$3, cpfLoane=$4, \
-                cpffuncionario=$5, nomeLivro=$6 \
-                where id=$1 returning *", 
-                [id, dataEmprestimo, dataDevolucao, cpfLoane, cpfFuncionario, nomeLivro]);
+                "update emprestimo set dataemprestimo=$2, datadevolucao=$3, cpfcliente=$4, cpffuncionario=$5, nomelivro=$6\
+                 where id=$1 returning *",
+                [id, dataEmprestimo, dataDevolucao, cpfCliente, cpfFuncionario, nomeLivro]);
         }else{
             consulta = await conn.query(
-                'update emprestimo set "devolucaoRealizada"=true, \
-                where id=$1 returning *', 
+                'update emprestimo set "devolucaoRealizada"=true,\
+                 where id=$1 returning *', 
                 [id]);
         }
         return consulta.rows;
@@ -98,4 +97,21 @@ async function updateLoan(tipo, id, dataEmprestimo, dataDevolucao, cpfLoane, cpf
     }
 }
 
-export default {getAllLoans, getLoan, createLoan, deleteLoan, updateLoan}
+async function updateLoanDevolucao(id){
+
+    const conn = await conectar();
+
+    try{
+        const consulta = await conn.query('update emprestimo set "devolucaoRealizada"=true\
+                                           where id=$1 returning *', [id]);
+        return consulta.rows;
+    }
+    catch(err){
+        console.log(err);
+    }
+    finally{
+        conn.release();
+    }
+}
+
+export default {getAllLoans, getLoan, createLoan, deleteLoan, updateLoan, updateLoanDevolucao}

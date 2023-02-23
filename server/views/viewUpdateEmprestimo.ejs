@@ -11,32 +11,37 @@
 <body style="color: white;background-color: #1d2630; ">
   <div class="container mt-5">
     <div class="text-center">
-      <h1><str>Editar Cliente</str></h1>
+      <h1><str>Editar Emprestimo</str></h1>
     </div>
     <div class="main row justify-content-center">
-      <form action="http://localhost:3000/client/update/" method="post" class="row g-3" autocomplete="off">
+      <form action="http://localhost:3000/loan/update/" method="post" class="row g-3" autocomplete="off">
 
         <div class="col-md-3">
-          <label for="cpf">CPF:</label><br>
-          <input type="text" id="cpf" name="cpf" placeholder="12345678910" class="form-control" value = <%= row.cpf %> ><br>
+          <label for="cpfCliente">CPF do Cliente:</label><br>
+          <input type="text" id="cpfCliente" name="cpfCliente" placeholder="Ex: 12345678910" class="form-control" value = <%= row.cpfcliente %> ><br>
+        </div>
+
+        <div class="col-md-3">
+          <label for="cpfFuncionario">CPF do Funcionário:</label><br>
+          <input type="text" id="cpfFuncionario" name="cpfFuncionario" placeholder="Ex: 12345678910" class="form-control" value = <%= row.cpffuncionario %> ><br>
         </div>
 
         <div class="col-md-6">
-          <label for="nome">Nome:</label><br>
-          <input type="text" id="nome" name="nome" placeholder="Insira o nome completo" class="form-control" value="<%= row.nome %>" size="<%= row.nome.length %>"><br>
+          <label for="nomeLivro">Nome do Livro:</label><br>
+          <input type="text" id="nomeLivro" name="nomeLivro" placeholder="Ex: O Senhor dos Aneis" class="form-control" value="<%= row.nomelivro %>" size="<%= row.nomelivro.length %>"><br>
         </div>
 
         <div class="col-3">
-          <label for="telefone">Telefone:</label><br>
-          <input type="tel" id="telefone" name="telefone" placeholder="35911112222" class="form-control" value = <%= row.telefone %> ><br><br>
+          <label for="dataEmprestimo">Data de empréstimo:</label><br>
+          <input type="date" id="dataEmprestimo" name="dataEmprestimo" placeholder="11/11/2001" class="form-control" value = <%= row.dataemprestimo.toLocaleDateString().split('/').reverse().join('-') %> ><br><br>
         </div>
 
-        <div class="col-9">
-          <label for="endereco">Endereço:</label><br>
-          <input type="text" id="endereco" name="endereco" placeholder="RUA:" class="form-control" value="<%= row.endereco %>" size="<%= row.endereco.length %>"><br><br>
+        <div class="col-3">
+          <label for="dataDevolucao">Data de devolução:</label><br>
+          <input type="hidden" name="tipo" value='update'>
+          <input type="hidden" name="id" value=<%= row.id %>>
+          <input type="date" id="dataDevolucao" name="dataDevolucao" placeholder="11/11/2001" class="form-control" value = <%= row.datadevolucao.toLocaleDateString().split('/').reverse().join('-') %> ><br><br>
         </div>
-        
-        <input type="hidden" id="cpfAtual" name="cpfAtual" value= <%= row.cpf %> >
 
         <div class="col-10">
           <input class="btn btn-success add-btn" type="submit" value="Salvar Alterações">

@@ -65,8 +65,20 @@ async function updateLoan(tipo, id, dataEmprestimo, dataDevolucao, cpfCliente, c
         return ("Livro não cadastrado")
     }
     else{
-        return await emprestimoPersistence.updateLoan(id, dataEmprestimo, dataDevolucao, cpfCliente, cpfFuncionario, nomeLivro)
+        return await emprestimoPersistence.updateLoan(tipo, id, dataEmprestimo, dataDevolucao, cpfCliente, cpfFuncionario, nomeLivro)
     }
 }
 
-export default {getAllLoans, getLoan, createLoan, deleteLoan, updateLoan}
+async function updateLoanDevolucao(id){
+    const emprestimo = await emprestimoPersistence.getLoan(id);
+
+    if (!emprestimo[0]){
+        console.log("Empréstimo não cadastrado")
+        return ("Empréstimo não cadastrado")
+    }
+    else{
+        return await emprestimoPersistence.updateLoanDevolucao(id)
+    }
+}
+
+export default {getAllLoans, getLoan, createLoan, deleteLoan, updateLoan, updateLoanDevolucao}
