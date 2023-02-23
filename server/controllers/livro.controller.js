@@ -20,7 +20,7 @@ async function getLivro(req, res){
         }
         else if (tipo == 'update'){
             console.log(rows[0]);
-            res.render('viewUpdateCliente', {row: rows[0]});
+            res.render('viewUpdateLivro', {row: rows[0]});
         }
         else{
             res.send(rows);
@@ -53,13 +53,13 @@ async function getLivroID(req, res){
 async function createLivro(req, res){
     const nome = req.body.nome
     const autor = req.body.autor
-    const editora = req.body.editora
+    const editora = parseInt(req.body.editora)
 
     if (!nome || !nome || !autor || !editora ){
-        res.send("Nome, autor ou edição inválidos")
+        res.send('<script>alert("Nome, autor ou edição inválidos.");window.history.back();</script>');
     }
     else if(editora<0 || !Number(editora)){
-        res.send("Edicao inválida.")
+        res.send('<script>alert("Edicao inválida.");window.history.back();</script>');
     }
     else{
         const rows = await livroService.createLivro(nome, autor, editora);
@@ -99,11 +99,11 @@ async function deleteLivro(req, res){
 
 async function updateLivro(req, res){
     
-    const idAtual = req.body.id
-    const id = req.body.id
+    const idAtual = parseInt(req.body.id)
+    const id = parseInt(req.body.id)
     const nome = req.body.nome
     const autor = req.body.autor
-    const editora = req.body.editora
+    const editora = parseInt(req.body.editora)
     const situacao = req.body.situacao
 
     console.log("qualquer coisa")
@@ -124,9 +124,9 @@ async function updateLivro(req, res){
     else{
         const rows = await livroService.updateLivro(idAtual, id, nome, autor, editora,situacao);
         console.log(rows);
-        res.redirect('/client/');
+        res.redirect('/livro/');
     }
 }
 
 
-export default {getAllLivros, createLivro, getLivro, deleteLivro, updateLivro}
+export default {getAllLivros, createLivro, getLivro, deleteLivro, updateLivro, getLivroID}

@@ -119,8 +119,8 @@
                 <td><%= row.nascimento %></td>
                 <td><%= row.telefone %></td>
                 <td><%= row.endereco %></td>
-                <td><%= row.qntLivrosEmprestados %></td>
-                <td>
+                <td><%= row.qntlivrosemprestados %></td>
+                <td style="width: 120px;">
                   <form action="http://localhost:3000/client/getCLient" method="put" class="d-grid gap-2">
                     <input type="hidden" name="tipo" value="update">
                     <input type="hidden" name="cpf" value=<%= row.cpf %>>
