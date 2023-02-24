@@ -13,15 +13,15 @@ async function getClient(req, res){
     }
     else{
         const rows = await clienteService.getClient(cpf)
-        if (tipo == 'filtro'){
+        if(rows == "CPF não cadastrado"){
+            res.send(rows);
+        }
+        else if (tipo == 'filtro'){
             res.render('viewCliente', {rows: rows});
         }
         else if (tipo == 'update'){
             console.log(rows[0]);
             res.render('viewUpdateCliente', {row: rows[0]});
-        }
-        else{
-            res.send(rows);
         }
     }
 }

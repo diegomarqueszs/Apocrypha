@@ -15,15 +15,15 @@ async function getLoan(req, res){
     }
     else{
         const rows = await emprestimoService.getLoan(id)
-        if (tipo == 'filtro'){
+        if(rows == "Id não cadastrado"){
+            res.send(rows);
+        }
+        else if (tipo == 'filtro'){
             res.render('viewEmprestimo', {rows: rows});
         }
         else if (tipo == 'update'){
             console.log(rows[0]);
             res.render('viewUpdateEmprestimo', {row: rows[0]});
-        }
-        else{
-            res.send(rows);
         }
     }
 }
