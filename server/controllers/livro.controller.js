@@ -61,11 +61,11 @@ async function createLivro(req, res){
     }
     else{
         const rows = await livroService.createLivro(nome, autor, editora);
-        if (rows[0]){
-            res.redirect('/livro/')
-        }
-        else{
+        if(rows == "Livro já cadastrado"){
             res.send(rows);
+        }
+        else if(rows[0]){
+            res.redirect('/livro/')
         }
     }
 }

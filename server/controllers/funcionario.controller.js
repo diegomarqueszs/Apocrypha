@@ -49,11 +49,11 @@ async function createFuncionario(req, res){
     }
     else{
         const rows = await funcionarioService.createFuncionario(cpf, nome, dataNascimento, telefone, endereco, salario, senha, admin);
-        if (rows[0]){
-            res.redirect('/funcionario/')
-        }
-        else{
+        if(rows == "CPF ja cadastrado"){
             res.send(rows);
+        }
+        else if(rows[0]){
+            res.redirect('/funcionario/')
         }
     }
 }

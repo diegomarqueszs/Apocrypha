@@ -43,11 +43,11 @@ async function createClient(req, res){
     }
     else{
         const rows = await clienteService.createClient(cpf, nome, dataNascimento, telefone, endereco);
-        if (rows[0]){
-            res.redirect('/client/')
-        }
-        else{
+        if(rows == "CPF já cadastrado"){
             res.send(rows);
+        }
+        else if (rows[0]){
+            res.redirect('/client/')
         }
     }
 }

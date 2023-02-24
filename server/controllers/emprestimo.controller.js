@@ -45,11 +45,17 @@ async function createLoan(req, res){
     }
     else{
         const rows = await emprestimoService.createLoan(cpfCliente, dataEmprestimo, dataDevolucao, cpfFuncionario, nomeLivro);
-        if (rows[0]){
-            res.redirect('/Loan/')
-        }
-        else{
+        if(rows == "Cliente não cadastrado"){
             res.send(rows);
+        }
+        else if(rows == "Livro não cadastrado"){
+            res.send(rows);
+        }
+        else if(rows == "Livro não disponível"){
+            res.send(rows);
+        }
+        else if(rows[0]){
+            res.redirect('/Loan/')
         }
     }
 }
