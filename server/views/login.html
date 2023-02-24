@@ -36,15 +36,15 @@
       <div class="row h-100 justify-content-center align-items-center" >
         <div class="col-lg-4 col-md-6 col-sm-8">
           
-          <form class="login-form">
+          <form action="http://localhost:3000/login" method="post" class="login-form">
             <div class="d-flex justify-content-center" style="margin-bottom: 30px;"><h1>Apocrypha</h1></div>
             <div class="mb-3">
-              <label for="email" class="form-label">Cpf</label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+              <label for="cpf" class="form-label">Cpf</label>
+              <input type="text" class="form-control" id="cpf" name="cpf">
             </div>
             <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password">
+              <label for="senha" class="form-label">Senha</label>
+              <input type="password" class="form-control" id="senha" name="senha">
             </div>
             <button type="submit" class="btn btn-primary ">Entrar</button>
           </form>

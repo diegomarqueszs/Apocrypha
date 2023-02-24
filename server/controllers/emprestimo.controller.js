@@ -33,7 +33,7 @@ async function createLoan(req, res){
     const dataEmprestimo = req.body.dataEmprestimo
     const dataDevolucao = req.body.dataDevolucao
     const cpfCliente = req.body.cpfCliente
-    const cpfFuncionario = req.body.cpfFuncionario
+    const cpfFuncionario = req.cookies.cpfFunc
     const nomeLivro = req.body.nomeLivro
 
 
@@ -85,7 +85,7 @@ async function updateLoan(req, res){
         const dataEmprestimo = req.body.dataEmprestimo
         const dataDevolucao = req.body.dataDevolucao
         const cpfCliente = req.body.cpfCliente
-        const cpfFuncionario = req.body.cpfFuncionario
+        const cpfFuncionario = req.cookies.cpfFunc
         const nomeLivro = req.body.nomeLivro
 
         if (!dataEmprestimo || !nomeLivro || !dataDevolucao || !cpfCliente || !cpfFuncionario){

@@ -1,14 +1,19 @@
 import express from "express"
+import cookieParser from "cookie-parser"
 
 import clienteRouter from "./routes/clientes.routes.js"
 import emprestimoRouter from "./routes/emprestimo.routes.js"
 import livroRouter from "./routes/livro.routes.js"
 import funcionarioRouter from "./routes/funcionario.routes.js"
+import loginRouter from "./routes/login.routes.js"
+
+
 
 
 const servidor = express()
 
 servidor.use(express.json())
+servidor.use(cookieParser())
 servidor.use(express.urlencoded({extended: true}))
 servidor.use(express.static('views'))
 
@@ -20,6 +25,7 @@ servidor.use("/client", clienteRouter)
 servidor.use("/loan", emprestimoRouter)
 servidor.use("/funcionario", funcionarioRouter)
 servidor.use("/livro",livroRouter)
+servidor.use("/login",loginRouter)
 
 servidor.listen(3000, servico)
 
@@ -34,8 +40,8 @@ function servico(){
     console.log("Servidor rodando...")
 }
 
-servidor.get("/login", telaInicial)
+servidor.get("/", telaInicial)
 
 function telaInicial(req, res){
-    res.sendFile("index", { root: '.' })
+    res.sendFile("/views/login.html", { root: '.' })
 }
