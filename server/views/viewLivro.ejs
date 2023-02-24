@@ -80,7 +80,7 @@
             <form action="http://localhost:3000/livro/getLivro" method="get"  autocomplete="off" style="margin: 20px 0px 20px 0px;padding: 15px; ">
               <div class="col-12">
                 <input type="hidden" name="tipo" value= "filtro">
-                <label for="cpf">Buscar por nome:</label><br>
+                <label for="nome">Buscar por nome:</label><br>
                 <input type="text" id="nome" name="nome" placeholder="Digite o nome do livro" class="form-control" ><br>
               </div>
               <div class="col-10">
@@ -117,7 +117,7 @@
                     </form>
                     <form action="http://localhost:3000/livro/delete" method="get" class="d-grid gap-2" style="margin-top: 10px;">
                       <input type="hidden" name="id" value=<%= row.id %>>
-                      <input type="hidden" name="situacao" value=<%= row.situacao %>>
+                      <input type="hidden" name="disponivel" value=<%= row.disponivel %>>
                       <button class="btn btn-danger btn-sm delete" type="submit">Deletar</button>
                     </form>
                   </td>

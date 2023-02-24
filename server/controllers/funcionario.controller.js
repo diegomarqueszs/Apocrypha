@@ -13,15 +13,15 @@ async function getFuncionario(req, res){
     }
     else{
         const rows = await funcionarioService.getFuncionario(cpf)
-        if (tipo == 'filtro'){
+        if(rows == "CPF nao cadastrado"){
+            res.send(rows);
+        }
+        else if (tipo == 'filtro'){
             res.render('viewFuncionario', {rows: rows});
         }
         else if (tipo == 'update'){
             console.log(rows[0]);
             res.render('viewUpdateFuncionario', {row: rows[0]});
-        }
-        else{
-            res.send(rows);
         }
     }
 }
@@ -49,11 +49,11 @@ async function createFuncionario(req, res){
     }
     else{
         const rows = await funcionarioService.createFuncionario(cpf, nome, dataNascimento, telefone, endereco, salario, senha, admin);
-        if (rows[0]){
-            res.redirect('/funcionario/')
-        }
-        else{
+        if(rows == "CPF ja cadastrado"){
             res.send(rows);
+        }
+        else if(rows[0]){
+            res.redirect('/funcionario/')
         }
     }
 }

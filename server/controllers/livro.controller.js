@@ -1,9 +1,7 @@
-import livroPersistence from "../persistence/livro.persistence.js";
 import livroService from "../services/livro.service.js";
-import clienteService from "../services/livro.service.js"
 
 async function getAllLivros(req, res){
-    const rows = await clienteService.getAllLivros();
+    const rows = await livroService.getAllLivros();
     res.render('viewLivro', {rows: rows});
 }
 
@@ -15,15 +13,15 @@ async function getLivro(req, res){
     }
     else{
         const rows = await livroService.getLivro(nome)
-        if (tipo == 'filtro'){
+        if(rows == "Nome não cadastrado"){
+            res.send(rows);
+        }
+        else if (tipo == 'filtro'){
             res.render('viewLivro', {rows: rows});
         }
         else if (tipo == 'update'){
             console.log(rows[0]);
             res.render('viewUpdateLivro', {row: rows[0]});
-        }
-        else{
-            res.send(rows);
         }
     }
 }
@@ -36,15 +34,15 @@ async function getLivroID(req, res){
     }
     else{
         const rows = await livroService.getLivroID(id)
-        if (tipo == 'filtro'){
+        if(rows == "Nome não cadastrado"){
+            res.send(rows);
+        }
+        else if (tipo == 'filtro'){
             res.render('viewLivro', {rows: rows});
         }
         else if (tipo == 'update'){
             console.log(rows[0]);
             res.render('viewUpdateLivro', {row: rows[0]});
-        }
-        else{
-            res.send(rows);
         }
     }
 }
@@ -63,11 +61,11 @@ async function createLivro(req, res){
     }
     else{
         const rows = await livroService.createLivro(nome, autor, editora);
-        if (rows[0]){
-            res.redirect('/livro/')
-        }
-        else{
+        if(rows == "Livro já cadastrado"){
             res.send(rows);
+        }
+        else if(rows[0]){
+            res.redirect('/livro/')
         }
     }
 }
