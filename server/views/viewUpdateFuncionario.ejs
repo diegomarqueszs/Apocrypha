@@ -37,20 +37,23 @@
           <input type="text" id="endereco" name="endereco" placeholder="RUA:" class="form-control" value="<%= row.endereco %>" size="<%= row.endereco.length %>"><br><br>
         </div>
 
-        <div class="col-9">
+        <div class="col-3">
             <label for="salario">Salario:</label><br>
             <input type="text" id="salario" name="salario" placeholder="$" class="form-control" value="<%= row.salario %>" size="<%= row.salario.length %>"><br><br>
         </div>
 
-        <div class="col-9">
-            <label for="senha">Senha:</label><br>
-            <input type="text" id="senha" name="senha" placeholder="*******" class="form-control" value="<%= row.senha %>" size="<%= row.senha.length %>"><br><br>
+        <div class="col-3">
+          <label for="admin">Tipo:</label><br>
+          <select id="admin" name="admin" class="form-control">
+            <option value="false" <%= row.admin === false ? 'selected' : '' %>>Funcionario Comum</option>
+            <option value="true" <%= row.admin === true ? 'selected' : '' %>>Administrador</option>
+          </select><br><br>
         </div>
 
-        <div class="col-9">
-            <label for="admin">Admin:</label><br>
-            <input type="boolean" id="admin" name="admin" placeholder="Exemplo: true" class="form-control" value="<%= row.admin %>" size="<%= row.admin.length %>"><br><br>
-        </div>
+        <div class="col-3">
+          <label for="senha">Senha: </label><br>
+          <input type="password" id="senha" name="senha" placeholder="*******" class="form-control" value="<%= row.senha %>" size="<%= row.senha.length %>"><br><br>
+      </div>
         
         <input type="hidden" id="cpfAtual" name="cpfAtual" value= <%= row.cpf %> >
 

@@ -82,13 +82,16 @@
         </div>
 
         <div class="col-3 mt-0">
-            <label for="admin">Admin:</label><br>
-            <input type="boolean" id="admin" name="admin" placeholder="Exemplo: true" class="form-control"><br><br>
-        </div>
+          <label for="admin">Tipo de Usuário:</label><br>
+          <select id="admin" name="admin" class="form-control">
+              <option value="1">Administrador</option>
+              <option value="0">Funcionário Comum</option>
+          </select>
+      </div>
 
-        <div class="col-3 mt-0">
+        <div class="col-6 mt-0">
             <label for="senha">Senha:</label><br>
-            <input type="text" id="senha" name="senha" placeholder="*******" class="form-control"><br><br>
+            <input type="password" id="senha" name="senha" placeholder="*******" class="form-control"><br><br>
         </div>
 
         <div class="col-10 mt-0">
@@ -124,6 +127,7 @@
             <th>Telefone</th>
             <th>Endereço</th>
             <th>Salario</th>
+            <th>Tipo</th>
             <th>Ações</th>
           </thead>
           <tbody>
@@ -135,6 +139,7 @@
                 <td><%= row.telefone %></td>
                 <td><%= row.endereco %></td>
                 <td><%= row.salario %></td>
+                <td><%= row.admin ? 'Admnistrador' : 'Funcionario Comum' %></td>
                 <td style="width: 120px;">
                   <form action="http://localhost:3000/funcionario/getFuncionario" method="put" class="d-grid gap-2">
                     <input type="hidden" name="tipo" value="update">
