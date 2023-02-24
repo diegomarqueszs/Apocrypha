@@ -108,7 +108,7 @@
                   <td><%= row.nome %></td>
                   <td><%= row.autor %></td>
                   <td><%= row.editora %></td>
-                  <td><%= row.disponivel ? 'Emprestado' : 'Disponível' %></td>
+                  <td><%= !row.disponivel ? 'Emprestado' : 'Disponível' %></td>
                   <td style="width: 120px;">
                     <form action="http://localhost:3000/livro/getLivroID" method="put" class="d-grid gap-2">
                       <input type="hidden" name="tipo" value="update">
