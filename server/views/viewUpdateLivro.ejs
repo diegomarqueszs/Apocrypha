@@ -17,11 +17,6 @@
     <div class="main row justify-content-center">
       <form action="http://localhost:3000/livro/update/" method="post" class="row g-3" autocomplete="off">
 
-        <div class="col-md-1">
-          <label for="id">ID:</label><br>
-          <input type="text" id="id" name="id" placeholder="12345678910" class="form-control" value = <%= row.id %> ><br>
-        </div>
-
         <div class="col-md-6">
           <label for="nome">Nome:</label><br>
           <input type="text" id="nome" name="nome" placeholder="Insira o nome completo" class="form-control" value="<%= row.nome %>" size="<%= row.nome.length %>"><br>
@@ -38,14 +33,14 @@
         </div>
         
         <div class="col-3">
-          <label for="situacao">Situação:</label><br>
-          <select id="situacao" name="situacao" class="form-control">
-            <option value="false" <%= row.situacao === false ? 'selected' : '' %>>Disponível</option>
-            <option value="true" <%= row.situacao === true ? 'selected' : '' %>>Emprestado</option>
+          <label for="disponivel">Situação:</label><br>
+          <select id="disponivel" name="disponivel" class="form-control">
+            <option value="false" <%= row.disponivel === false ? 'selected' : '' %>>Disponível</option>
+            <option value="true" <%= row.disponivel === true ? 'selected' : '' %>>Emprestado</option>
           </select><br><br>
         </div>
 
-        <input type="hidden" id="idAtual" name="idAtual" value= <%= row.id %> >
+        <input type="hidden" id="nomeAtual" name="nomeAtual" value= "<%= row.nome %>" size="<%= row.nome.length %>"><br>
 
         <div class="col-10">
           <input class="btn btn-success add-btn" type="submit" value="Salvar Alterações">

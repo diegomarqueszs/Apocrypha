@@ -73,7 +73,7 @@ async function createLivro(req, res){
 async function deleteLivro(req, res){
     
     const id = parseInt(req.query.id);
-    const situacao = decodeURIComponent (req.params.situacao)
+    const disponivel = decodeURIComponent (req.params.disponivel)
 
     if (!id || !Number(id)){
         console.log("exibindo body");
@@ -81,7 +81,7 @@ async function deleteLivro(req, res){
         console.log(req.body);
         res.send(`Id Inválido. ${id}`)
     }
-    else if(!situacao){
+    else if(!disponivel){
       res.send("Não é possível remover livros emprestados.")
     }
     else{
@@ -96,31 +96,21 @@ async function deleteLivro(req, res){
 }
 
 async function updateLivro(req, res){
-    
-    const idAtual = parseInt(req.body.id)
-    const id = parseInt(req.body.id)
+    const nomeAtual = req.body.nomeAtual
     const nome = req.body.nome
     const autor = req.body.autor
     const editora = parseInt(req.body.editora)
-    const situacao = req.body.situacao
+    const disponivel = req.body.disponivel
 
     console.log("qualquer coisa")
-    console.log(idAtual)
+    console.log(nomeAtual)
+    console.log(nome)
 
-    if (!id || !nome || !autor || !editora || !idAtual || !situacao){
-        res.send("ID, nome. editora, autor ou situcao inválidos")
-    }
-    else if(id<0){
-        res.send("ID deve ser posítivo")
-    }
-    else if(!Number(id) || !Number(idAtual)){
-        res.send("Id devem possuir somente numeros")
-    }
-    else if(id!=idAtual && situacao == true){
-        res.send("Não é possível alterar o id de livros que estão emprestados")
+    if (!nome || !autor || !editora || !nomeAtual || !disponivel){
+        res.send("Nome, editora, autor ou situcao inválidos")
     }
     else{
-        const rows = await livroService.updateLivro(idAtual, id, nome, autor, editora,situacao);
+        const rows = await livroService.updateLivro(nomeAtual, nome, autor, editora,disponivel);
         console.log(rows);
         res.redirect('/livro/');
     }

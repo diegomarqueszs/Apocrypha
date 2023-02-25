@@ -86,15 +86,15 @@ async function deleteLivro(id){
     }
 }
 
-async function updateLivro(idAtual, id, nome, autor, editora, situacao){
+async function updateLivro(nomeAtual, nome, autor, editora, disponivel){
 
     const conn = await conectar();
 
     try{
         const consulta = await conn.query(
-            "update livro set id=$1, nome=$2, autor=$3, editora=$4, situacao=$5\
-             where id=$6 returning *", 
-            [id, nome, autor, editora, situacao,idAtual])
+            "update livro set nome=$1, autor=$2, editora=$3, disponivel=$4\
+             where nome=$5 returning *", 
+            [nome, autor, editora, disponivel, nomeAtual])
         return consulta.rows
     }
     catch(err){
