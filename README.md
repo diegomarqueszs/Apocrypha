@@ -54,3 +54,26 @@ O sistema fará o controle de todos os clientes, funcionários, livros e emprés
 - Insomnia 2022.7.5
 - Embedded JavaScript
 
+## Regras do uso do Git
+### Commits:
+- Commits devem representar mudanças pequenas no sistema, evitando que as mudanças fiquem muito grandes e difíceis de serem revertidas.
+- Commits devem possuir mensagens claras e descritivas, deve evitar descrições genéricas como: "Correções" ou "Alterações", e indicar o que foi alterado "Correções Create tabela Empréstimo".
+- Commits devem apresentar data de realização no começo da mensagem.
+- Commits devem possuir verbos de ação no presente.
+- Commits desncessários devem ser evitados.
+### Branches:
+- Mudanças maiores no sistema, devem ser realizadas em branches separadas para facilitar a revisão.
+- Nomes de branches devem ser descritivas
+- Caso uma branche já foi mesclada ou fique obsoleta, deve ser deletada
+- Antes do marge com branche principal, deve ser acordado com todos da equipe, garantindo que todos estão de acordo com as novas alterações.
+### Tags:
+- Tags devem ser utilizadas para marcar versões consistentes do sistema.
+- Tags devem manter padrão de nomenclatura de versão adotada, exemplo V.0. V.1, V.2
+### Organização de pastas:
+- O sistema deve ser divido em:
+    - Rotas
+    - Views
+    - Controllers 
+    - Services
+- O código deve ser separado para que exerça apenas a função da pasta que esta alocado.
+
