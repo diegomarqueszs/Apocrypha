@@ -71,9 +71,7 @@ async function createLivro(req, res){
 }
 
 async function deleteLivro(req, res){
-    
     const id = parseInt(req.query.id);
-    const disponivel = decodeURIComponent (req.params.disponivel)
 
     if (!id || !Number(id)){
         console.log("exibindo body");
@@ -81,12 +79,12 @@ async function deleteLivro(req, res){
         console.log(req.body);
         res.send('<script>alert("Id inválido!");window.history.back();</script>')
     }
-    else if(!disponivel){
-      res.send('<script>alert("Não é possível remover livros emprestados!");window.history.back();</script>')
-    }
     else{
         const rows = await livroService.deleteLivro(id)
-        if(rows[0]){
+        if(rows == "Livro não disponivel"){
+            res.send('<script>alert("Não é possível remover livros emprestados!");window.history.back();</script>')
+        }
+        else if(rows[0]){
             res.redirect('/livro/')
         }
         else{

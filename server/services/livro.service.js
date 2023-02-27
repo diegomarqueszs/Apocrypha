@@ -39,7 +39,12 @@ async function deleteLivro(id){
     if (!livro[0]){
         console.log("Livro não cadastrado")
         return ("Livro não cadastrado")
-    }else{
+    }
+    else if(!livro[0].disponivel){
+        console.log("Livro não disponivel")
+        return ("Livro não disponivel")
+    }
+    else{
         return await livroPersistence.deleteLivro(id) 
     }
 }

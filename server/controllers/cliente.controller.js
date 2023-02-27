@@ -53,7 +53,6 @@ async function createClient(req, res){
 }
 
 async function deleteClient(req, res){
-    
     const cpf = req.query.cpf
 
     if (!cpf || cpf.length != 11 || !Number(cpf)){
@@ -61,7 +60,10 @@ async function deleteClient(req, res){
     }
     else{
         const rows = await clienteService.deleteClient(cpf)
-        if(rows[0]){
+        if(rows == "Cliente pendente"){
+            res.send('<script>alert("Não é possível remover clientes com pendências!");window.history.back();</script>')
+        }
+        else if(rows[0]){
             res.redirect('/client/')
         }
         else{

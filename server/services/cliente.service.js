@@ -30,17 +30,19 @@ async function deleteClient(cpf){
     if (!cliente[0]){
         console.log("CPF não cadastrado")
         return ("CPF não cadastrado")
-    }else{
+    }
+    else if(cliente[0].qntLivrosEmprestados > 0){
+        console.log("Cliente pendente")
+        return ("Cliente pendente")
+    }
+    else{
         return await clientePersistence.deleteClient(cpf) 
     }
 }
 
 async function updateClient(cpfAtual, cpf, nome, telefone, endereco){
-    //console.log("passou1")
     const cliente = await clientePersistence.getClient(cpfAtual);
-    //console.log("passou2")
     const cliente2 = await clientePersistence.getClient(cpf);
-    //console.log("passou3")
 
     if (!cliente[0]){
         console.log("CPF não cadastrado")
