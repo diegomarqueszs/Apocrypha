@@ -103,8 +103,13 @@ async function updateFuncionario(req, res){
     }
     else{
         const rows = await funcionarioService.updateFuncionario(cpfAtual, cpf, nome, telefone, endereco, salario, senha, admin);
-        console.log(rows);
-        res.redirect('/funcionario/');
+        if(rows == "O novo CPF ja esta cadastrado"){
+            res.send('<script>alert("CPF já cadastrado!");window.history.back();</script>');
+        }
+        else if(rows[0]){
+            console.log(rows);
+            res.redirect('/funcionario/');
+        }
     }
 }
 

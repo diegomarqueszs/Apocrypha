@@ -91,10 +91,14 @@ async function updateClient(req, res){
         res.send('<script>alert("CPFs devem possuir somente números");window.history.back();</script>');
     }
     else{
-        //res.send(await clienteService.updateClient(cpfAtual, cpf, nome, telefone, endereco));
         const rows = await clienteService.updateClient(cpfAtual, cpf, nome, telefone, endereco);
-        console.log(rows);
-        res.redirect('/client/');
+        if(rows == "O novo CPF já está cadastrado"){
+            res.send('<script>alert("CPF já cadastrado!");window.history.back();</script>');
+        }
+        else if(rows[0]){
+            console.log(rows);
+            res.redirect('/client/');
+        }
     }
 }
 

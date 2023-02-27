@@ -111,8 +111,13 @@ async function updateLivro(req, res){
     }
     else{
         const rows = await livroService.updateLivro(nomeAtual, nome, autor, editora,disponivel);
-        console.log(rows);
-        res.redirect('/livro/');
+        if(rows == "O novo nome já está cadastrado"){
+            res.send('<script>alert("Nome já cadastrado!");window.history.back();</script>');
+        }
+        else if(rows[0]){
+            console.log(rows);
+            res.redirect('/livro/');
+        }
     }
 }
 

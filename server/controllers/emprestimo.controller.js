@@ -102,8 +102,19 @@ async function updateLoan(req, res){
         }
         else{
             const rows = await emprestimoService.updateLoan(tipo, id, dataEmprestimo, dataDevolucao, cpfCliente, cpfFuncionario, nomeLivro);
-            console.log(rows);
-            res.redirect('/Loan/');
+            if(rows == "Empréstimo não cadastrado"){
+                res.send('<script>alert("Empréstimo não cadastrado");window.history.back();</script>');
+            }
+            else if(rows == "Cliente não cadastrado"){
+                res.send('<script>alert("Cliente não cadastrado!");window.history.back();</script>');
+            }
+            else if(rows == "Livro não cadastrado"){
+                res.send('<script>alert("Livro não cadastrado!");window.history.back();</script>');
+            }
+            else if(rows[0]){
+                console.log(rows);
+                res.redirect('/Loan/');
+            }
         }
     }
 }
