@@ -9,12 +9,12 @@ async function getFuncionario(req, res){
     const tipo = req.query.tipo;
     const cpf = req.query.cpf;
     if (!cpf || cpf.length != 11 || !Number(cpf)){
-        res.send("CPF Inválido.")
+        res.send('<script>alert("CPF Inválido!");window.history.back();</script>');
     }
     else{
         const rows = await funcionarioService.getFuncionario(cpf)
         if(rows == "CPF nao cadastrado"){
-            res.send(rows);
+            res.send('<script>alert("CPF não cadastrado!");window.history.back();</script>');
         }
         else if (tipo == 'filtro'){
             res.render('viewFuncionario', {rows: rows});
@@ -39,18 +39,18 @@ async function createFuncionario(req, res){
 
 
     if (!cpf || !nome || !dataNascimento || !telefone || !endereco || !senha){
-        res.send("CPF, nome, data de nascimento, telefone, endereço ou senha inválidos")
+        res.send('<script>alert("CPF, nome, data de nascimento, telefone, endereço ou senha inválidos!");window.history.back();</script>');
     }
     else if(cpf.length != 11 || !Number(cpf)){
-        res.send("CPF inválido.")
+        res.send('<script>alert("CPF Inválido!");window.history.back();</script>');
     }
-    else if(salario <= 0){
-        res.send("O salario nao pode ser negativo.")
+    else if(salario < 0){
+        res.send('<script>alert("O salário não pode ser negativo!");window.history.back();</script>');
     }
     else{
         const rows = await funcionarioService.createFuncionario(cpf, nome, dataNascimento, telefone, endereco, salario, senha, admin);
         if(rows == "CPF ja cadastrado"){
-            res.send(rows);
+            res.send('<script>alert("CPF já cadastrado!");window.history.back();</script>');
         }
         else if(rows[0]){
             res.redirect('/funcionario/')
@@ -63,7 +63,7 @@ async function deleteFuncionario(req, res){
     const cpf = req.query.cpf
 
     if (!cpf || cpf.length != 11 || !Number(cpf)){
-        res.send("CPF Inválido.")
+        res.send('<script>alert("CPF Inválido!");window.history.back();</script>');
     }
     else{
         const rows = await funcionarioService.deleteFuncionario(cpf)
@@ -90,16 +90,16 @@ async function updateFuncionario(req, res){
     console.log(cpfAtual)
 
     if (!cpf || !nome || !telefone || !endereco || !senha || !cpfAtual){
-        res.send("CPF, nome, telefone, endereco ou senha inválidos")
+        res.send('<script>alert("CPF, nome, telefone, endereco ou senha inválidos");window.history.back();</script>');
     }
     else if(cpf.length != 11){
-        res.send("CPFs devem possuir 11 dígitos")
+        res.send('<script>alert("CPFs devem possuir 11 dígitos");window.history.back();</script>');
     }
-    else if(salario <= 0){
-        res.send("O salario nao pode ser negativo")
+    else if(salario < 0){
+        res.send('<script>alert("O salário não pode ser negativo!");window.history.back();</script>');
     }
     else if(!Number(cpf) || !Number(cpfAtual)){
-        res.send("CPFs devem possuir somente números")
+        res.send('<script>alert("CPFs devem possuir somente números");window.history.back();</script>');
     }
     else{
         const rows = await funcionarioService.updateFuncionario(cpfAtual, cpf, nome, telefone, endereco, salario, senha, admin);

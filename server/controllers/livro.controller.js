@@ -9,12 +9,12 @@ async function getLivro(req, res){
     const tipo = req.query.tipo;
     const nome = req.query.nome;
     if (!nome){
-        res.send("Nome Inválido.")
+        res.send('<script>alert("Nome inválido!");window.history.back();</script>')
     }
     else{
         const rows = await livroService.getLivro(nome)
         if(rows == "Nome não cadastrado"){
-            res.send(rows);
+            res.send('<script>alert("Nome não cadastrado!");window.history.back();</script>');
         }
         else if (tipo == 'filtro'){
             res.render('viewLivro', {rows: rows});
@@ -30,12 +30,12 @@ async function getLivroID(req, res){
     const tipo = req.query.tipo;
     const id = req.query.id;
     if (!id){
-        res.send("ID Inválido.")
+        res.send('<script>alert("Id inválido!");window.history.back();</script>')
     }
     else{
         const rows = await livroService.getLivroID(id)
         if(rows == "Nome não cadastrado"){
-            res.send(rows);
+            res.send('<script>alert("Nome não cadastrado!");window.history.back();</script>');
         }
         else if (tipo == 'filtro'){
             res.render('viewLivro', {rows: rows});
@@ -57,12 +57,12 @@ async function createLivro(req, res){
         res.send('<script>alert("Nome, autor ou edição inválidos.");window.history.back();</script>');
     }
     else if(editora<0 || !Number(editora)){
-        res.send('<script>alert("Edicao inválida.");window.history.back();</script>');
+        res.send('<script>alert("Edicao inválida!");window.history.back();</script>');
     }
     else{
         const rows = await livroService.createLivro(nome, autor, editora);
         if(rows == "Livro já cadastrado"){
-            res.send(rows);
+            res.send('<script>alert("Livro já cadastrado!");window.history.back();</script>');
         }
         else if(rows[0]){
             res.redirect('/livro/')
@@ -79,10 +79,10 @@ async function deleteLivro(req, res){
         console.log("exibindo body");
         console.log(req.query);
         console.log(req.body);
-        res.send(`Id Inválido. ${id}`)
+        res.send('<script>alert("Id inválido!");window.history.back();</script>')
     }
     else if(!disponivel){
-      res.send("Não é possível remover livros emprestados.")
+      res.send('<script>alert("Não é possível remover livros emprestados!");window.history.back();</script>')
     }
     else{
         const rows = await livroService.deleteLivro(id)
@@ -107,7 +107,7 @@ async function updateLivro(req, res){
     console.log(nome)
 
     if (!nome || !autor || !editora || !nomeAtual || !disponivel){
-        res.send("Nome, editora, autor ou situcao inválidos")
+        res.send('<script>alert("Nome, autor, editora ou situação inválidos.");window.history.back();</script>')
     }
     else{
         const rows = await livroService.updateLivro(nomeAtual, nome, autor, editora,disponivel);

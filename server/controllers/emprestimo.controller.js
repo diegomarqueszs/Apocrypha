@@ -11,12 +11,12 @@ async function getLoan(req, res){
     const tipo = req.query.tipo;
     const id = req.query.id;
     if (!id || !Number(id)){
-        res.send("Id Inválido.")
+        res.send('<script>alert("Id inválido!");window.history.back();</script>');
     }
     else{
         const rows = await emprestimoService.getLoan(id)
         if(rows == "Id não cadastrado"){
-            res.send(rows);
+            res.send('<script>alert("Id não cadastrado!");window.history.back();</script>');
         }
         else if (tipo == 'filtro'){
             res.render('viewEmprestimo', {rows: rows});
@@ -38,21 +38,21 @@ async function createLoan(req, res){
 
 
     if (!dataEmprestimo || !nomeLivro || !dataDevolucao || !cpfCliente || !cpfFuncionario){
-        res.send("Data de emprestimo/devolucao, nome do livro, CPF do cliente ou do funcionário inválidos")
+        res.send('<script>alert("Data de emprestimo/devolucao, nome do livro, CPF do cliente ou do funcionário inválidos");window.history.back();</script>');
     }
     else if(cpfCliente.length != 11 || !Number(cpfCliente)){
-        res.send("CPF do cliente inválido.")
+        res.send('<script>alert("CPF do cliente inválido!");window.history.back();</script>');
     }
     else{
         const rows = await emprestimoService.createLoan(cpfCliente, dataEmprestimo, dataDevolucao, cpfFuncionario, nomeLivro);
         if(rows == "Cliente não cadastrado"){
-            res.send(rows);
+            res.send('<script>alert("Cliente não cadastrado!");window.history.back();</script>');
         }
         else if(rows == "Livro não cadastrado"){
-            res.send(rows);
+            res.send('<script>alert("Livro não cadastrado!");window.history.back();</script>');
         }
         else if(rows == "Livro não disponível"){
-            res.send(rows);
+            res.send('<script>alert("Livro esta em um empréstimo ativo!");window.history.back();</script>');
         }
         else if(rows[0]){
             res.redirect('/Loan/')
@@ -65,7 +65,7 @@ async function deleteLoan(req, res){
     const id = req.query.id
 
     if (!id || !Number(id)){
-        res.send("Id Inválido.")
+        res.send('<script>alert("Id inválido");window.history.back();</script>');
     }
     else{
         const rows = await emprestimoService.deleteLoan(id)
@@ -95,10 +95,10 @@ async function updateLoan(req, res){
         const nomeLivro = req.body.nomeLivro
 
         if (!dataEmprestimo || !nomeLivro || !dataDevolucao || !cpfCliente || !cpfFuncionario){
-            res.send("Data de emprestimo/devolucao, nome do livro, CPF do cliente ou do funcionário inválidos")
+            res.send('<script>alert("Data de emprestimo/devolucao, nome do livro, CPF do cliente ou do funcionário inválidos");window.history.back();</script>');
         }
         else if(cpfCliente.length != 11 || !Number(cpfCliente)){
-            res.send("CPF do cliente inválido.")
+            res.send('<script>alert("CPF do cliente inválido!");window.history.back();</script>');
         }
         else{
             const rows = await emprestimoService.updateLoan(tipo, id, dataEmprestimo, dataDevolucao, cpfCliente, cpfFuncionario, nomeLivro);

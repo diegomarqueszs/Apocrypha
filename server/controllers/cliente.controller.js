@@ -9,12 +9,12 @@ async function getClient(req, res){
     const tipo = req.query.tipo;
     const cpf = req.query.cpf;
     if (!cpf || cpf.length != 11 || !Number(cpf)){
-        res.send("CPF Inválido.")
+        res.send('<script>alert("CPF inválido!");window.history.back();</script>');
     }
     else{
         const rows = await clienteService.getClient(cpf)
         if(rows == "CPF não cadastrado"){
-            res.send(rows);
+            res.send('<script>alert("CPF não cadastrado!");window.history.back();</script>');
         }
         else if (tipo == 'filtro'){
             res.render('viewCliente', {rows: rows});
@@ -36,15 +36,15 @@ async function createClient(req, res){
 
 
     if (!cpf || !nome || !dataNascimento || !telefone || !endereco){
-        res.send("CPF, nome, data de nascimento, telefone ou endereço inválidos")
+        res.send('<script>alert("CPF, nome, data de nascimento, telefone ou endereço inválidos");window.history.back();</script>');
     }
     else if(cpf.length != 11 || !Number(cpf)){
-        res.send("CPF inválido.")
+        res.send('<script>alert("CPF inválido!");window.history.back();</script>');
     }
     else{
         const rows = await clienteService.createClient(cpf, nome, dataNascimento, telefone, endereco);
         if(rows == "CPF já cadastrado"){
-            res.send(rows);
+            res.send('<script>alert("CPF já cadastrado!");window.history.back();</script>');
         }
         else if (rows[0]){
             res.redirect('/client/')
@@ -57,7 +57,7 @@ async function deleteClient(req, res){
     const cpf = req.query.cpf
 
     if (!cpf || cpf.length != 11 || !Number(cpf)){
-        res.send("CPF Inválido.")
+        res.send('<script>alert("CPF inválido");window.history.back();</script>');
     }
     else{
         const rows = await clienteService.deleteClient(cpf)
@@ -82,13 +82,13 @@ async function updateClient(req, res){
     console.log(cpfAtual)
 
     if (!cpf || !nome || !telefone || !endereco || !cpfAtual){
-        res.send("CPF, nome ou salário inválidos")
+        res.send('<script>alert("CPF, nome, telefone ou endereço inválidos");window.history.back();</script>');
     }
     else if(cpf.length != 11){
-        res.send("CPFs devem possuir 11 dígitos")
+        res.send('<script>alert("CPFs devem possuir 11 dígitos");window.history.back();</script>');
     }
     else if(!Number(cpf) || !Number(cpfAtual)){
-        res.send("CPFs devem possuir somente números")
+        res.send('<script>alert("CPFs devem possuir somente números");window.history.back();</script>');
     }
     else{
         //res.send(await clienteService.updateClient(cpfAtual, cpf, nome, telefone, endereco));
