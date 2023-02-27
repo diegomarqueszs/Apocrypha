@@ -111,6 +111,9 @@ async function updateLoan(req, res){
             else if(rows == "Livro não cadastrado"){
                 res.send('<script>alert("Livro não cadastrado!");window.history.back();</script>');
             }
+            else if(rows == "Livro não disponível"){
+                res.send('<script>alert("Livro esta em um empréstimo ativo!");window.history.back();</script>');
+            }
             else if(rows[0]){
                 console.log(rows);
                 res.redirect('/Loan/');

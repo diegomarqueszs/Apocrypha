@@ -64,6 +64,10 @@ async function updateLoan(tipo, id, dataEmprestimo, dataDevolucao, cpfCliente, c
         console.log("Livro não cadastrado")
         return ("Livro não cadastrado")
     }
+    else if(!livro[0].disponivel){
+        console.log("Livro não disponível")
+        return ("Livro não disponível") 
+    }
     else{
         return await emprestimoPersistence.updateLoan(tipo, id, dataEmprestimo, dataDevolucao, cpfCliente, cpfFuncionario, nomeLivro)
     }
