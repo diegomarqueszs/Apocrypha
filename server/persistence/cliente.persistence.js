@@ -97,7 +97,7 @@ async function deleteClient(cpf){
 
 
 /*
- * Função para cadastrar um cliente pelo cpf.
+ * Função para alterar um cliente pelo cpf.
  * Ela recebe todos os dados já validados pelo controller e pelo service,
  * então só resta fazer o update no banco de dados. Após a alteracao, o banco de dados
  * retorna o cliente alterado, que também será retornado para o service.

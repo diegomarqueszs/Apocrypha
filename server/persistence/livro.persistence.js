@@ -1,5 +1,10 @@
 import {conectar} from "./bancoDeDados.js";
 
+/**
+ * Função que obtêm  todos os livros do banco de dados
+ * e retorna-os para o service
+ */
+
 async function getAllLivros(){
 
     const conn = await conectar();
@@ -15,6 +20,13 @@ async function getAllLivros(){
         conn.release();
     }
 }
+
+/**
+ * Função para buscar um livro pelo nome.
+ * Ela recebe um nome já validado pelo controller e pelo service, então já é
+ * possível procurá-lo no bando de dados. Após o retorno do banco de 
+ * dados, ele é repassado para o service.
+ */
 
 async function getLivro(nome){
     const conn = await conectar();
@@ -32,6 +44,13 @@ async function getLivro(nome){
     }
 }
 
+/**
+ * Função para buscar um livro pelo ID.
+ * Ela recebe um id já validado pelo controller e pelo service, então já é
+ * possível procurá-lo no bando de dados. Após o retorno do banco de 
+ * dados, ele é repassado para o service.
+ */
+
 async function getLivroID(id){
     const conn = await conectar();
 
@@ -47,6 +66,13 @@ async function getLivroID(id){
         conn.release();
     }
 }
+
+/**
+ * Função para cadastrar um livro pelo nome.
+ * Ela recebe todos os dados já validados pelo controller e pelo service,
+ * então só resta fazer o insert no banco de dados. Após a insersao, o banco de dados
+ * retorna o livro, que também será retornado para o service.
+ */
 
 async function createLivro(nome, autor, editora){
 
@@ -69,6 +95,12 @@ async function createLivro(nome, autor, editora){
     }
 }
 
+/*
+ * Função para deletar um livro pelo id.
+ * Ela recebe um id já validado pelo controller e pelo service, então já é
+ * possível deletá-lo do banco de dados sem problemas. Após o retorno
+ * do banco de dados, ele é repassado para o service.
+*/
 
 async function deleteLivro(id){
 
@@ -85,6 +117,13 @@ async function deleteLivro(id){
         conn.release();
     }
 }
+
+/*
+ * Função para alterar um livro pelo id.
+ * Ela recebe todos os dados já validados pelo controller e pelo service,
+ * então só resta fazer o update no banco de dados. Após a alteracao, o banco de dados
+ * retorna o livro alterado, que também será retornado para o service.
+*/
 
 async function updateLivro(nomeAtual, nome, autor, editora, disponivel){
 
