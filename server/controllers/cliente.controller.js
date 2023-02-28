@@ -1,10 +1,25 @@
 import clienteService from "../services/cliente.service.js"
 
+
+/*
+ * Função que obtém todos os clientes do banco de dados.
+ * e imprime-os na página do navegador
+*/
 async function getAllClients(req, res){
     const rows = await clienteService.getAllClients();
     res.render('viewCliente', {rows: rows});
 }
 
+
+/*
+ * Função para buscar um cliente pelo cpf.
+ * Ela recebe um cpf, faz a validaçao
+ * e passa-o para o service. 
+ * Após todo o processo, imprime o cliente na página do navegador (caso tenha sucesso)
+ * Ela também recebe um tipo, se for "filtro", ela mostrará apenas o cliente filtrado
+ * na interface atual do navegador. Se for do tipo "update", ela enviará os dados para
+ * outra interface no qual o funcionário fará a alteraçao dos dados.
+*/
 async function getClient(req, res){
     const tipo = req.query.tipo;
     const cpf = req.query.cpf;
@@ -26,7 +41,14 @@ async function getClient(req, res){
     }
 }
 
-
+/*
+ * Função para cadastrar um cliente.
+ * Ela recebe os dados do navegador, faz a validaçao
+ * de todos eles e passa-os para o service. 
+ * Após todo o processo, o cliente é cadastrado no banco de dados
+ * e é feita a atualização da página (caso tenha sucesso)
+ * ou é lançado um popup do erro (caso nao tenha sucesso)
+*/
 async function createClient(req, res){
     const cpf = req.body.cpf
     const nome = req.body.nome
@@ -52,6 +74,14 @@ async function createClient(req, res){
     }
 }
 
+/*
+ * Função para deletar um cliente pelo cpf.
+ * Ela recebe um cpf do navegador, faz a validaçao
+ * e passa-o para o service. 
+ * Após todo o processo, o cliente é removido no banco de dados
+ * e é feita a atualização da página (caso tenha sucesso)
+ * ou é lançado um popup do erro (caso nao tenha sucesso)
+*/
 async function deleteClient(req, res){
     const cpf = req.query.cpf
 
@@ -72,6 +102,14 @@ async function deleteClient(req, res){
     }
 }
 
+/*
+ * Função para alterar um cliente.
+ * Ela recebe os dados do navegador, faz a validaçao
+ * de todos eles e passa-os para o service. 
+ * Após todo o processo, o cliente é alterado no banco de dados
+ * e é feita a atualização da página (caso tenha sucesso)
+ * ou é lançado um popup do erro (caso nao tenha sucesso)
+*/
 async function updateClient(req, res){
     
     const cpfAtual = req.body.cpfAtual
