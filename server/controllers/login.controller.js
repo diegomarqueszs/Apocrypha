@@ -14,7 +14,10 @@ async function realizarLogin(req, res){
         res.send("CPF inválido.")
     }else{
         const rows = await loginService.realizarLogin(cpf, senha);
-        if (rows[0]){
+        if(rows == "CPF ou senha incorretos!"){
+            res.send('<script>alert("CPF ou senha incorretos!");window.history.back();</script>')
+        }
+        else if (rows[0]){
             res.cookie('cpfFunc', cpf, { maxAge: 900000, httpOnly: true });
             res.cookie('ehAdm', rows[0].admin, { maxAge: 900000, httpOnly: true });
             res.redirect('/loan/')
