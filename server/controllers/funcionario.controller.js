@@ -1,8 +1,13 @@
 import funcionarioService from "../services/funcionario.service.js"
 
 async function getAllFuncionarios(req, res){
-    const rows = await funcionarioService.getAllFuncionarios();
-    res.render('viewFuncionario', {rows: rows});
+    if(req.cookies.ehAdm == 'false'){
+        res.send('<script>alert("Você não tem permissão para entrar!");window.history.back();</script>');
+    }
+    else{
+        const rows = await funcionarioService.getAllFuncionarios();
+        res.render('viewFuncionario', {rows: rows});
+    }
 }
 
 async function getFuncionario(req, res){
@@ -85,9 +90,6 @@ async function updateFuncionario(req, res){
     const salario = req.body.salario
     const senha = req.body.senha
     const admin = req.body.admin
-
-    console.log("qualquer coisa")
-    console.log(cpfAtual)
 
     if (!cpf || !nome || !telefone || !endereco || !senha || !cpfAtual){
         res.send('<script>alert("CPF, nome, telefone, endereco ou senha inválidos");window.history.back();</script>');

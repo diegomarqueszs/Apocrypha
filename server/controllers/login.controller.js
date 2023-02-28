@@ -20,6 +20,7 @@ async function realizarLogin(req, res){
         else if (rows[0]){
             res.cookie('cpfFunc', cpf, { maxAge: 900000, httpOnly: true });
             res.cookie('ehAdm', rows[0].admin, { maxAge: 900000, httpOnly: true });
+            console.log(rows[0].admin, cpf)
             res.redirect('/loan/')
         }
         else{
