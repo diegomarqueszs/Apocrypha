@@ -69,7 +69,10 @@ async function deleteLoan(req, res){
     }
     else{
         const rows = await emprestimoService.deleteLoan(id)
-        if(rows[0]){
+        if(rows == "Emprestimo em andamento"){
+            res.send('<script>alert("Não é possível excluir um empréstimo ativo!");window.history.back();</script>');
+        }
+        else if(rows[0]){
             res.redirect('/Loan/')
         }
         else{

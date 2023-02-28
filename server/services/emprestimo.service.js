@@ -44,7 +44,11 @@ async function deleteLoan(id){
     if (!emprestimo[0]){
         console.log("id não cadastrado")
         return ("id não cadastrado")
-    }else{
+    }else if(!emprestimo[0].devolucaoRealizada){
+        console.log("Emprestimo em andamento")
+        return ("Emprestimo em andamento")
+    }
+    else{
         return await emprestimoPersistence.deleteLoan(id) 
     }
 }
