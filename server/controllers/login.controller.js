@@ -8,10 +8,10 @@ async function realizarLogin(req, res){
     console.log(senha);
 
     if (!cpf || !senha){
-        res.send("CPF ou senha inválidos.")
+        res.send('<script>alert("CPF ou senha inválidos!");window.history.back();</script>')
     }
     else if(cpf.length != 11 || !Number(cpf)){
-        res.send("CPF inválido.")
+        res.send('<script>alert("CPF deve ter 11 digitos númericos!");window.history.back();</script>')
     }else{
         const rows = await loginService.realizarLogin(cpf, senha);
         if(rows == "CPF ou senha incorretos!"){
