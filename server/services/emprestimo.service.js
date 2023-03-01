@@ -117,6 +117,9 @@ async function updateLoanDevolucao(id){
     if (!emprestimo[0]){
         console.log("Empréstimo não cadastrado")
         return ("Empréstimo não cadastrado")
+    }else if(emprestimo[0].devolucaoRealizada){
+        console.log("Devolução já concluída")
+        return ("Devolução já concluída")
     }
     else{
         return await emprestimoPersistence.updateLoanDevolucao(id)

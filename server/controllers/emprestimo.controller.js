@@ -123,8 +123,12 @@ async function updateLoan(req, res){
     const id = req.body.id
     if (tipo == "attDevolucao"){
         const rows = await emprestimoService.updateLoanDevolucao(id);
-        console.log(rows);
-        res.redirect('/Loan/');
+        if(rows == "Devolução já concluída"){
+            res.send('<script>alert("Devolução já concluída");window.history.back();</script>');
+        }else{
+            console.log(rows);
+            res.redirect('/Loan/');
+        }
     }
     else{
         const nomeAtual = req.body.nomeAtual
