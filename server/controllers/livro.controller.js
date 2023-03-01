@@ -21,7 +21,7 @@ async function getAllLivros(req, res){
 
 async function getLivro(req, res){
     const tipo = req.query.tipo;
-    const nome = req.query.nome;
+    const nome = req.query.nomeBuscado;
     if (!nome){
         res.send('<script>alert("Nome inválido!");window.history.back();</script>')
     }
