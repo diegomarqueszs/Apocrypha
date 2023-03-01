@@ -91,20 +91,21 @@ async function updateLoan(req, res){
         res.redirect('/Loan/');
     }
     else{
+        const nomeAtual = req.body.nomeAtual
         const dataEmprestimo = req.body.dataEmprestimo
         const dataDevolucao = req.body.dataDevolucao
         const cpfCliente = req.body.cpfCliente
         const cpfFuncionario = req.cookies.cpfFunc
         const nomeLivro = req.body.nomeLivro
 
-        if (!dataEmprestimo || !nomeLivro || !dataDevolucao || !cpfCliente || !cpfFuncionario){
+        if (!dataEmprestimo || !nomeLivro || !dataDevolucao || !cpfCliente || !cpfFuncionario || !nomeAtual){
             res.send('<script>alert("Data de emprestimo/devolucao, nome do livro, CPF do cliente ou do funcionário inválidos");window.history.back();</script>');
         }
         else if(cpfCliente.length != 11 || !Number(cpfCliente)){
             res.send('<script>alert("CPF do cliente inválido!");window.history.back();</script>');
         }
         else{
-            const rows = await emprestimoService.updateLoan(tipo, id, dataEmprestimo, dataDevolucao, cpfCliente, cpfFuncionario, nomeLivro);
+            const rows = await emprestimoService.updateLoan(tipo, id, dataEmprestimo, dataDevolucao, cpfCliente, cpfFuncionario, nomeLivro, nomeAtual);
             if(rows == "Empréstimo não cadastrado"){
                 res.send('<script>alert("Empréstimo não cadastrado");window.history.back();</script>');
             }

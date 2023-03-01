@@ -53,7 +53,7 @@ async function deleteLoan(id){
     }
 }
 
-async function updateLoan(tipo, id, dataEmprestimo, dataDevolucao, cpfCliente, cpfFuncionario, nomeLivro){
+async function updateLoan(tipo, id, dataEmprestimo, dataDevolucao, cpfCliente, cpfFuncionario, nomeLivro, nomeAtual){
     const emprestimo = await emprestimoPersistence.getLoan(id);
     const cliente = await clientePersistence.getClient(cpfCliente);
     const livro = await livroPersistence.getLivro(nomeLivro);
@@ -68,7 +68,7 @@ async function updateLoan(tipo, id, dataEmprestimo, dataDevolucao, cpfCliente, c
         console.log("Livro não cadastrado")
         return ("Livro não cadastrado")
     }
-    else if(!livro[0].disponivel){
+    else if(!livro[0].disponivel && livro[0].nome.localeCompare(nomeAtual) != 0){
         console.log("Livro não disponível")
         return ("Livro não disponível") 
     }

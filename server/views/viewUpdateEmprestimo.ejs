@@ -43,6 +43,8 @@
           <input type="date" id="dataDevolucao" name="dataDevolucao" placeholder="11/11/2001" class="form-control" value = <%= row.datadevolucao.toLocaleDateString().split('/').reverse().join('-') %> ><br><br>
         </div>
 
+        <input type="hidden" id="nomeAtual" name="nomeAtual" value="<%= row.nomelivro %>" size="<%= row.nomelivro.length %>"><br>
+
         <div class="col-10">
           <input class="btn btn-success add-btn" type="submit" value="Salvar Alterações">
           <input class="btn btn-secondary" type="reset" value="Limpar">
