@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1677622216463" clover="3.2.0">
-  <project timestamp="1677622216463" name="All files">
-    <metrics statements="238" coveredstatements="7" conditionals="62" coveredconditionals="5" methods="36" coveredmethods="1" elements="336" coveredelements="13" complexity="0" loc="238" ncloc="238" packages="3" files="8" classes="8"/>
+<coverage generated="1677638745854" clover="3.2.0">
+  <project timestamp="1677638745854" name="All files">
+    <metrics statements="238" coveredstatements="38" conditionals="62" coveredconditionals="9" methods="36" coveredmethods="8" elements="336" coveredelements="55" complexity="0" loc="238" ncloc="238" packages="3" files="8" classes="8"/>
     <package name="controllers.__test__">
       <metrics statements="8" coveredstatements="7" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
       <file name="cpfValido.js" path="C:\Users\ricar\Desktop\Apocrypha\server\controllers\__test__\cpfValido.js">
@@ -17,17 +17,17 @@
       </file>
     </package>
     <package name="persistence">
-      <metrics statements="122" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="18" coveredmethods="0"/>
+      <metrics statements="122" coveredstatements="22" conditionals="4" coveredconditionals="1" methods="18" coveredmethods="4"/>
       <file name="bancoDeDados.js" path="C:\Users\ricar\Desktop\Apocrypha\server\persistence\bancoDeDados.js">
-        <metrics statements="5" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="4" count="0" type="cond" truecount="0" falsecount="2"/>
+        <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="4" count="3" type="cond" truecount="1" falsecount="1"/>
         <line num="5" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
       </file>
       <file name="cliente.persistence.js" path="C:\Users\ricar\Desktop\Apocrypha\server\persistence\cliente.persistence.js">
-        <metrics statements="34" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <metrics statements="34" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="1"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
@@ -35,13 +35,13 @@
         <line num="14" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
         <line num="56" count="0" type="stmt"/>
         <line num="58" count="0" type="stmt"/>
         <line num="59" count="0" type="stmt"/>
@@ -64,7 +64,7 @@
         <line num="120" count="0" type="stmt"/>
       </file>
       <file name="emprestimo.persistence.js" path="C:\Users\ricar\Desktop\Apocrypha\server\persistence\emprestimo.persistence.js">
-        <metrics statements="42" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <metrics statements="42" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="6" coveredmethods="1"/>
         <line num="5" count="0" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
@@ -72,13 +72,13 @@
         <line num="10" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
@@ -109,7 +109,7 @@
         <line num="113" count="0" type="stmt"/>
       </file>
       <file name="livro.persistence.js" path="C:\Users\ricar\Desktop\Apocrypha\server\persistence\livro.persistence.js">
-        <metrics statements="41" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <metrics statements="41" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="1"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
@@ -117,13 +117,13 @@
         <line num="14" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
         <line num="55" count="0" type="stmt"/>
         <line num="57" count="0" type="stmt"/>
         <line num="58" count="0" type="stmt"/>
@@ -154,15 +154,15 @@
       </file>
     </package>
     <package name="services">
-      <metrics statements="108" coveredstatements="0" conditionals="52" coveredconditionals="0" methods="17" coveredmethods="0"/>
+      <metrics statements="108" coveredstatements="9" conditionals="52" coveredconditionals="3" methods="17" coveredmethods="3"/>
       <file name="cliente.service.js" path="C:\Users\ricar\Desktop\Apocrypha\server\services\cliente.service.js">
-        <metrics statements="28" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <metrics statements="28" coveredstatements="3" conditionals="14" coveredconditionals="1" methods="5" coveredmethods="1"/>
         <line num="8" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="20" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
         <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="36" count="0" type="stmt"/>
@@ -187,13 +187,13 @@
         <line num="85" count="0" type="stmt"/>
       </file>
       <file name="emprestimo.service.js" path="C:\Users\ricar\Desktop\Apocrypha\server\services\emprestimo.service.js">
-        <metrics statements="47" coveredstatements="0" conditionals="22" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <metrics statements="47" coveredstatements="3" conditionals="22" coveredconditionals="1" methods="6" coveredmethods="1"/>
         <line num="7" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="13" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
         <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
@@ -237,13 +237,13 @@
         <line num="88" count="0" type="stmt"/>
       </file>
       <file name="livro.service.js" path="C:\Users\ricar\Desktop\Apocrypha\server\services\livro.service.js">
-        <metrics statements="33" coveredstatements="0" conditionals="16" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <metrics statements="33" coveredstatements="3" conditionals="16" coveredconditionals="1" methods="6" coveredmethods="1"/>
         <line num="8" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="21" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
         <line num="37" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="38" count="0" type="stmt"/>
