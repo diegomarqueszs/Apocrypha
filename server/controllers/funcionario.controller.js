@@ -1,5 +1,9 @@
 import funcionarioService from "../services/funcionario.service.js"
 
+/*
+ * Função que obtém todos os funcionarios do banco de dados.
+ * e imprime-os na página do navegador
+*/
 async function getAllFuncionarios(req, res){
     if(req.cookies.ehAdm == 'false'){
         res.send('<script>alert("Você não tem permissão para entrar!");window.history.back();</script>');
@@ -10,6 +14,15 @@ async function getAllFuncionarios(req, res){
     }
 }
 
+/*
+ * Função para buscar um funcionario pelo cpf.
+ * Ela recebe um cpf, faz a validaçao
+ * e passa-o para o service. 
+ * Após todo o processo, imprime o funcionario na página do navegador (caso tenha sucesso)
+ * Ela também recebe um tipo, se for "filtro", ela mostrará apenas o funcionario filtrado
+ * na interface atual do navegador. Se for do tipo "update", ela enviará os dados para
+ * outra interface no qual o funcionário fará a alteraçao dos dados.
+*/
 async function getFuncionario(req, res){
     const tipo = req.query.tipo;
     const cpf = req.query.cpf;
@@ -31,7 +44,14 @@ async function getFuncionario(req, res){
     }
 }
 
-
+/*
+ * Função para cadastrar um funcionario.
+ * Ela recebe os dados do navegador, faz a validaçao
+ * de todos eles e passa-os para o service. 
+ * Após todo o processo, o funcionario é cadastrado no banco de dados
+ * e é feita a atualização da página (caso tenha sucesso)
+ * ou é lançado um popup do erro (caso nao tenha sucesso)
+*/
 async function createFuncionario(req, res){
     const cpf = req.body.cpf
     const nome = req.body.nome
@@ -63,6 +83,14 @@ async function createFuncionario(req, res){
     }
 }
 
+/*
+ * Função para deletar um funcionario pelo cpf.
+ * Ela recebe um cpf do navegador, faz a validaçao
+ * e passa-o para o service. 
+ * Após todo o processo, o funcionario é removido no banco de dados
+ * e é feita a atualização da página (caso tenha sucesso)
+ * ou é lançado um popup do erro (caso nao tenha sucesso)
+*/
 async function deleteFuncionario(req, res){
     
     const cpf = req.query.cpf
@@ -81,6 +109,14 @@ async function deleteFuncionario(req, res){
     }
 }
 
+/*
+ * Função para alterar um funcionario.
+ * Ela recebe os dados do navegador, faz a validaçao
+ * de todos eles e passa-os para o service. 
+ * Após todo o processo, o funcionario é alterado no banco de dados
+ * e é feita a atualização da página (caso tenha sucesso)
+ * ou é lançado um popup do erro (caso nao tenha sucesso)
+*/
 async function updateFuncionario(req, res){
     const cpfAtual = req.body.cpfAtual
     const cpf = req.body.cpf

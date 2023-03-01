@@ -1,5 +1,13 @@
 import loginService from "../services/login.service.js"
 
+/*
+ * Função para efetuar um login de um funcionario.
+ * Ela recebe o cpf e a senha pelo navegador, faz a validaçao
+ * desses dados e verifica se o cpf e a senha correspondem aos dados de
+ * um funcionario cadastrado no sistema e então passa-os para o service. 
+ * Após todo o processo, o funcionario é redirecionado para a página de empréstimos
+ * (caso tenha sucesso) ou é lançado um popup do erro (caso nao tenha sucesso)
+*/
 async function realizarLogin(req, res){
     const cpf = req.body.cpf;
     const senha = req.body.senha;

@@ -1,5 +1,9 @@
 import {conectar} from "./bancoDeDados.js";
 
+/*
+ * Função que obtém todos os emprestimos do banco de dados 
+ * e retorna-os para o service
+*/
 async function getAllLoans(){
 
     const conn = await conectar();
@@ -17,6 +21,12 @@ async function getAllLoans(){
     }
 }
 
+/*
+ * Função para buscar um emprestimo pelo id.
+ * Ela recebe um id já validado pelo controller e pelo service, então já é
+ * possível procurá-lo no banco de dados sem problemas. Após o retorno
+ * do banco de dados, ele é repassado para o service.
+*/
 async function getLoan(id){
     const conn = await conectar();
 
@@ -33,6 +43,12 @@ async function getLoan(id){
     }
 }
 
+/*
+ * Função para cadastrar um emprestimo pelo id.
+ * Ela recebe todos os dados já validados pelo controller e pelo service,
+ * então só resta fazer o insert no banco de dados. Após a insersao, o banco de dados
+ * retorna o emprestimo, que também será retornado para o service.
+*/
 async function createLoan(cpfCliente, dataEmprestimo, dataDevolucao, cpfFuncionario, nomeLivro){
 
     const conn = await conectar();
@@ -54,6 +70,12 @@ async function createLoan(cpfCliente, dataEmprestimo, dataDevolucao, cpfFunciona
     }
 }
 
+/*
+ * Função para deletar um emprestimo pelo id.
+ * Ela recebe um id já validado pelo controller e pelo service, então já é
+ * possível deletá-lo do banco de dados sem problemas. Após o retorno
+ * do banco de dados, ele é repassado para o service.
+*/
 async function deleteLoan(id){
 
     const conn = await conectar();
@@ -70,6 +92,12 @@ async function deleteLoan(id){
     }
 }
 
+/*
+ * Função para alterar um emprestimo pelo id.
+ * Ela recebe todos os dados já validados pelo controller e pelo service,
+ * então só resta fazer o update no banco de dados. Após a alteracao, o banco de dados
+ * retorna o emprestimo alterado, que também será retornado para o service.
+*/
 async function updateLoan(tipo, id, dataEmprestimo, dataDevolucao, cpfCliente, cpfFuncionario, nomeLivro){
 
     const conn = await conectar();
@@ -97,6 +125,12 @@ async function updateLoan(tipo, id, dataEmprestimo, dataDevolucao, cpfCliente, c
     }
 }
 
+/*
+ * Função para alterar a situacao do emprestimo.
+ * Ela recebe todos os dados já validados pelo controller e pelo service,
+ * então só resta fazer o update no banco de dados. Após a alteracao, o banco de dados
+ * retorna o emprestimo alterado, que também será retornado para o service.
+*/
 async function updateLoanDevolucao(id){
 
     const conn = await conectar();

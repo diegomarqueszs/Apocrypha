@@ -1,12 +1,24 @@
 import emprestimoService from "../services/emprestimo.service.js"
 
-
-
+/*
+ * Função que obtém todos os emprestimos do banco de dados.
+ * e imprime-os na página do navegador
+*/
 async function getAllLoans(req, res){
     const rows = await emprestimoService.getAllLoans();
     res.render('viewemprestimo', {rows: rows});
 }
 
+
+/*
+ * Função para buscar um emprestimo pelo id.
+ * Ela recebe um id, faz a validaçao
+ * e passa-o para o service. 
+ * Após todo o processo, imprime o emprestimo na página do navegador (caso tenha sucesso)
+ * Ela também recebe um tipo, se for "filtro", ela mostrará apenas o emprestimo filtrado
+ * na interface atual do navegador. Se for do tipo "update", ela enviará os dados para
+ * outra interface no qual o funcionário fará a alteraçao dos dados.
+*/
 async function getLoan(req, res){
     const tipo = req.query.tipo;
     const id = req.query.id;
@@ -29,6 +41,14 @@ async function getLoan(req, res){
 }
 
 
+/*
+ * Função para cadastrar um emprestimo.
+ * Ela recebe os dados do navegador, faz a validaçao
+ * de todos eles e passa-os para o service. 
+ * Após todo o processo, o emprestimo é cadastrado no banco de dados
+ * e é feita a atualização da página (caso tenha sucesso)
+ * ou é lançado um popup do erro (caso nao tenha sucesso)
+*/
 async function createLoan(req, res){
     const dataEmprestimo = req.body.dataEmprestimo
     const dataDevolucao = req.body.dataDevolucao
@@ -60,6 +80,14 @@ async function createLoan(req, res){
     }
 }
 
+/*
+ * Função para deletar um emprestimo pelo id.
+ * Ela recebe um id do navegador, faz a validaçao
+ * e passa-o para o service. 
+ * Após todo o processo, o emprestimo é removido no banco de dados
+ * e é feita a atualização da página (caso tenha sucesso)
+ * ou é lançado um popup do erro (caso nao tenha sucesso)
+*/
 async function deleteLoan(req, res){
     
     const id = req.query.id
@@ -81,6 +109,14 @@ async function deleteLoan(req, res){
     }
 }
 
+/*
+ * Função para alterar um emprestimo.
+ * Ela recebe os dados do navegador, faz a validaçao
+ * de todos eles e passa-os para o service. 
+ * Após todo o processo, o emprestimo é alterado no banco de dados
+ * e é feita a atualização da página (caso tenha sucesso)
+ * ou é lançado um popup do erro (caso nao tenha sucesso)
+*/
 async function updateLoan(req, res){
 
     const tipo = req.body.tipo
