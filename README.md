@@ -29,20 +29,23 @@ O sistema fará o controle de todos os clientes, funcionários, livros e emprés
     - Administrador
 ## Estrutura de diretório
     - Apocrypha
-        - Model
         - Padrões Adotados
         - Requisitos
         - Server
             - View
-                -Imagens
             - Routes
             - Services
             - Controllers
+                - __test__
+            - teste
             - Persistence
             - Model
+                - Astah
                 - Diagramas
                     - Diagramas de Sequencia
                     - Implementação do Sistema
+                    - Diagrama de Classes
+                    - Diagrama de pacote
             - Node_modules
         
 ## Tecnologias Utilizadas:
